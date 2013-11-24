@@ -10,7 +10,7 @@ post_file           = 'posts/%(lang)s/%(post)s.html'
 
 @app.route('/')
 def home():
-	return render_template('home.html')
+    return render_template('home.html')
 
 @app.route('/<language>/<post_name>.html')
 def post(language, post_name):
