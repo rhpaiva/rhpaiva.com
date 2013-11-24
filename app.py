@@ -6,7 +6,7 @@ import os.path
 app = Flask(__name__)
 
 supported_languages = set(['pt', 'en', 'de'])
-post_file			= 'posts/%(lang)s/%(post)s.html'
+post_file           = 'posts/%(lang)s/%(post)s.html'
 
 @app.route('/')
 def home():
