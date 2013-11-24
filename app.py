@@ -12,21 +12,26 @@ post_file           = 'posts/%(lang)s/%(post)s.html'
 def home():
     return render_template('home.html')
 
+# TODO: we should really create "catchers" for each param here instead of
+# checking them inside the function
 @app.route('/<language>/<post_name>.html')
 def post(language, post_name):
+    return render_post(language, post_name)
+
+def render_post(language, post_name):
     is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', post_name)
     is_valid_language = language in supported_languages
     path              = post_file % {'lang': language, 'post': post_name}
 
     if (
-        is_valid_name and 
-        is_valid_language and 
-        file_exists('templates/' + path)
+        not is_valid_name or 
+        not is_valid_language or
+        not file_exists('templates/' + path)
     ):
-        return render_template(path, post_name = post_name, language = language)
-
-    else:
         return render_template('404.html'), 404
+
+    return render_template(path, post_name = post_name, language = language)
+
 
 # Using 'open' here to avoid a race condition. More on this:
 # stackoverflow.com/questions/82831/how-do-i-check-if-a-file-exists-using-python
