@@ -13,11 +13,13 @@ module.exports = function(grunt) {
 
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
+
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+            '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+            ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+
     // Task configuration.
     concat: {
       options: {
@@ -30,6 +32,7 @@ module.exports = function(grunt) {
         dest: '<%= paths.jsdist + "/" + pkg.name + "-" + pkg.version %>.js'
       }
     },
+
     uglify: {
       options: {
         banner: '<%= banner %>'
@@ -39,6 +42,7 @@ module.exports = function(grunt) {
         dest: '<%= paths.jsdist + "/" + pkg.name + "-" + pkg.version %>.min.js'
       }
     },
+
     jshint: {
       options: {
         curly: true,
@@ -64,9 +68,11 @@ module.exports = function(grunt) {
         src: ['<%= paths.jslib %>/**/*.js', 'test/**/*.js']
       }
     },
+
     qunit: {
       files: ['test/**/*.html']
     },
+
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -81,13 +87,16 @@ module.exports = function(grunt) {
         tasks: ['less']
       }
     },
+
     less: {
       development: {
         files: {
-          '<%= paths.cssdist + "/" + pkg.name + "-" + pkg.version %>.css': '<%= paths.csslib %>/**/*.less',
+          //'<%= paths.cssdist + "/" + pkg.name + "-" + pkg.version %>.css': '<%= paths.csslib %>/**/*.less',
+          '<%= paths.cssdist + "/" + pkg.name + "-" + pkg.version %>.css': '<%= paths.csslib %>/main.less',
         }
       }
     }
+    
   });
 
   // These plugins provide necessary tasks.

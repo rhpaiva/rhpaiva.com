@@ -40,3 +40,5 @@ venv
 
 # sublime text stuff
 *.sublime-workspace
+
+node_modules

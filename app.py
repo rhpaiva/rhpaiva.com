@@ -14,23 +14,23 @@ def home():
 
 # TODO: we should really create "catchers" for each param here instead of
 # checking them inside the function
-@app.route('/<language>/<post_name>.html')
-def post(language, post_name):
-    return render_post(language, post_name)
+@app.route('/<language>/<post_uri>.html')
+def post(language, post_uri):
+    return render_post(language, post_uri)
 
-def render_post(language, post_name):
-    is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', post_name)
+def render_post(language, post_uri):
+    is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', post_uri)
     is_valid_language = language in supported_languages
-    path              = post_file % {'lang': language, 'post': post_name}
+    path              = post_file % {'lang': language, 'post': post_uri}
 
     if (
-        not is_valid_name or 
+        not is_valid_name or
         not is_valid_language or
         not file_exists('templates/' + path)
     ):
         return render_template('404.html'), 404
 
-    return render_template(path, post_name = post_name, language = language)
+    return render_template(path, post_uri = post_uri, language = language)
 
 
 # Using 'open' here to avoid a race condition. More on this:
@@ -47,5 +47,5 @@ def error_not_found(error):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run()
+    app.run(debug = True)
+    #app.run()

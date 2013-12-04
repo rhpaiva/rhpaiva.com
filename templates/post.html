@@ -9,28 +9,46 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{% block post_title %} {{ post_name }} - oi{% endblock %}</title>
+        <title>{{post_title}}</title>
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link href='http://fonts.googleapis.com/css?family=Imprima&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/blog-0.0.1.css">
-        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!--<script src="/js/vendor/modernizr-2.6.2.min.js"></script>-->
     </head>
+
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <h1>{{ post_name }} in {{ language }}</h1>
-        {% block post_content %}{% endblock %}
+        <p class="hidden"><a href="#content">Go to the content</a></p>
+
+        <header role="banner">
+            <div id="me">
+                <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=100" width="50">Rodrigo Paiva</h1>
+                <p role="navigation"><a href="/en/whoami.html" title="Who am I?">Who am I?</a></p>
+            </div>
+            <!--<span class="menuIcon">&#9776;</span>-->
+            <ul class="languages hidden" role="navigation">
+                <li><a href="/pt/" title="Versão em Português" class="lang-pt"><abbr title="Português">PT</abbr></a></li>
+                <li><a href="/en/" title="English version" class="lang-en"><abbr title="English">EN</abbr></a></li>
+                <li><a href="/de/" title="Deutsche Version" class="lang-de"><abbr title="Deutsch">DE</abbr></a></li>
+            </ul>
+        </header>
+
+        <article id="content">
+            <h1>{{post_title}}</h1>
+
+            {% block post_content %}{% endblock %}
+        </article>
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <!--<script src="js/plugins.js"></script>-->
+        <script src="/js/blog-0.0.1.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -40,6 +58,6 @@
             e.src='//www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+        </script>        
     </body>
 </html>
