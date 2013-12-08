@@ -1,5 +1,7 @@
 from flask import Flask
 from flask import render_template
+
+import json
 import re as regexp
 import os.path
 
@@ -10,7 +12,7 @@ post_file           = 'posts/%(lang)s/%(post)s.html'
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 # TODO: we should really create "catchers" for each param here instead of
 # checking them inside the function
@@ -30,7 +32,24 @@ def render_post(language, post_uri):
     ):
         return render_template('404.html'), 404
 
-    return render_template(path, post_uri = post_uri, language = language)
+    i18n = read_json('i18n/pt.json')
+
+    return render_template(path, 
+            lang = i18n, 
+            vars = {
+                'post_uri': post_uri, 
+                'language': language
+            }
+    )
+
+def read_json(path):
+    try:
+        with open(path) as json_file:
+            data = json.load(json_file)
+    except Exception, e:
+        raise e
+
+    return data
 
 
 # Using 'open' here to avoid a race condition. More on this:

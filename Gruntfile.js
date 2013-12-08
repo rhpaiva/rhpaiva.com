@@ -1,6 +1,10 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+  var randomRange = function(min, max) {
+      return Math.ceil(Math.random() * (max - min + 1));
+  };
+
   // Project configuration.
   grunt.initConfig({
 
@@ -82,10 +86,10 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       },
-      less: {
-        files: '<%= paths.csslib %>/**/*.less',
-        tasks: ['less']
-      }
+      assets: {
+        files: ['<%= paths.csslib %>/**/*.less', '<%= paths.jslib %>/**/*.js'],
+        tasks: ['less', 'concat', 'uglify']
+      },
     },
 
     less: {
@@ -95,8 +99,26 @@ module.exports = function(grunt) {
           '<%= paths.cssdist + "/" + pkg.name + "-" + pkg.version %>.css': '<%= paths.csslib %>/main.less',
         }
       }
+    },
+
+    'string-replace': {
+      dist: {
+        files: {
+          '<%= paths.cssdist %>/': '<%= paths.cssdist %>/**/*.css',
+          'templates/': 'templates/**/*.html'
+        },
+        options: {
+          replacements: [{
+            // replaces the number of the banner bg in less files
+            pattern: /\%banner_number\%/ig,
+            replacement: randomRange(1,9)
+          }, {
+            pattern: /\%version\%/,
+            replacement: '<%= pkg.version %>'
+          }]
+        }
+      }
     }
-    
   });
 
   // These plugins provide necessary tasks.
@@ -106,9 +128,10 @@ module.exports = function(grunt) {
   //grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-string-replace');
 
   // Default task.
   //grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-  grunt.registerTask('default', ['less', 'concat', 'uglify']);
+  grunt.registerTask('default', ['less', 'string-replace', 'concat', 'uglify']);
 
 };

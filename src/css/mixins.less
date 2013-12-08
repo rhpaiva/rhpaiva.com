@@ -6,10 +6,10 @@
 
 @path-img: '/img';
 
-@bg: #f5f5f5 url('@{path-img}/bg.png') 0 0 repeat;
-@header-height-small: 150px;
-@header-height-medium: 100px;
-@header-height-big: 100px;
+@body-bg: #f5f5f5 url('@{path-img}/bg.png') 0 0 repeat;
+@header-height-small: 170px;
+@header-height-medium: 170px;
+@header-height-big: 170px;
 
 // font styles
 #Font {
@@ -53,17 +53,14 @@
 #Shadow {
     .box-bottom(@length: 5px, @blur: 3px, @color: #646464, @opacity: 50%) {
         // horizontal length, vertical length, blur radius, spread
-        -webkit-box-shadow: 0 @length @blur 1px fade(@color, @opacity);
-        -moz-box-shadow:    0 @length @blur 1px fade(@color, @opacity);
-        box-shadow:         0 @length @blur 1px fade(@color, @opacity);
+        -webkit-box-shadow: 0 @length @blur 0 fade(@color, @opacity);
+        -moz-box-shadow:    0 @length @blur 0 fade(@color, @opacity);
+        box-shadow:         0 @length @blur 0 fade(@color, @opacity);
     }
     .custom(@arguments) {
         -webkit-box-shadow: @arguments;
         -moz-box-shadow:    @arguments;
         box-shadow:         @arguments;
-        //-webkit-box-shadow: @length @length @blur 1px fade(@color, @opacity);
-        //-moz-box-shadow:    @length @length @blur 1px fade(@color, @opacity);
-        //box-shadow:         @length @length @blur 1px fade(@color, @opacity);
     }
     .text() {
         //filter: dropshadow(color=#333, offx=1, offy=1);
@@ -78,10 +75,26 @@
     }
 }
 
-.transition(@property: all, @time: 500ms, @easing: ease) {
-    -webkit-transition: @property @time @easing;
-    -moz-transition: @property @time @easing;
-    -ms-transition: @property @time @easing;
-    -o-transition: @property @time @easing;
-    transition: @property @time @easing;
+// effects class
+#Fx {
+    .transition(@property: all, @time: 500ms, @easing: ease) {
+        -webkit-transition: @property @time @easing;
+        -moz-transition: @property @time @easing;
+        -ms-transition: @property @time @easing;
+        -o-transition: @property @time @easing;
+        transition: @property @time @easing;
+    }
+}
+
+#BoxModel {
+    .border() {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .content() {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
 }

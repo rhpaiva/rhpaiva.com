@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ language }}"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ vars.language }}"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,18 +23,25 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <p class="hidden"><a href="#content">Go to the content</a></p>
+        <p class="hidden"><a href="#content">{{ lang.goToContent }}</a></p>
 
         <header role="banner">
             <div id="me">
-                <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=100" width="50">Rodrigo Paiva</h1>
-                <p role="navigation"><a href="/en/whoami.html" title="Who am I?">Who am I?</a></p>
+                <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"><a href="/">Rodrigo Paiva</a></h1>
             </div>
+
+            <nav>
+                <ul>
+                    <li><a href="/{{ vars.language }}/archive.html" title="{{ lang.listOfPosts }}">{{ lang.archive }}</a></li>
+                    <li><a href="/{{ vars.language }}/whoami.html" title="{{ lang.whoAmI }}?">{{ lang.whoAmI }}?</a></li>
+                </ul>
+            </nav>
+
             <!--<span class="menuIcon">&#9776;</span>-->
-            <ul class="languages hidden" role="navigation">
+            <ul class="languages list-inline" role="navigation">
                 <li><a href="/pt/" title="Versão em Português" class="lang-pt"><abbr title="Português">PT</abbr></a></li>
                 <li><a href="/en/" title="English version" class="lang-en"><abbr title="English">EN</abbr></a></li>
-                <li><a href="/de/" title="Deutsche Version" class="lang-de"><abbr title="Deutsch">DE</abbr></a></li>
+                <li><a href="/de/" title="Version auf Deutsch" class="lang-de"><abbr title="Deutsch">DE</abbr></a></li>
             </ul>
         </header>
 

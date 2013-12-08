@@ -4,8 +4,29 @@
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (max-width:700px) {
+    //background: fade(#000, 50%) url('@{path-img}/pics/small/1.jpg') 0 -50px no-repeat;    
+}
+
+// big screens
+@media only screen and (min-width: 1025px) {
+    body {
+        width: 1280px;
+        margin: 0 auto;
+    }
+
+    header[role="banner"] {
+        width: 1280px;
+        margin: auto;
+        background: fade(#000, 50%) url('@{path-img}/pics/big/3.jpg') 0 -100px no-repeat;    
+    }
+}
+
+// medium screens
+@media only screen and (min-width: 701px)  and (max-width: 1024px) {
+    header[role="banner"] {
+        background: fade(#000, 50%) url('@{path-img}/pics/medium/3.jpg') 0 -100px no-repeat;    
+    }
 }
 
 @media print,

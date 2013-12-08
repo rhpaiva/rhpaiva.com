@@ -1,1 +1,1 @@
-grunt watch:less
+grunt watch:assets
