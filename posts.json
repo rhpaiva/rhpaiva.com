@@ -1,0 +1,20 @@
+{
+    "posts": {
+        "de": [], 
+        "en": [
+            {
+                "date": "2013-12-09", 
+                "lang": "en", 
+                "uri": "/en/another-one-bites-the-dusta2.html", 
+                "title": "another one bites the dusta!2"
+            }, 
+            {
+                "date": "2013-12-09", 
+                "lang": "en", 
+                "uri": "/en/another-one-bites-the-dusta3.html", 
+                "title": "another one bites the dusta!3"
+            }
+        ], 
+        "pt": []
+    }
+}

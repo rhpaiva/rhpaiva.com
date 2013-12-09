@@ -87,8 +87,11 @@ module.exports = function(grunt) {
         tasks: ['jshint:lib_test', 'qunit']
       },
       assets: {
-        files: ['<%= paths.csslib %>/**/*.less', '<%= paths.jslib %>/**/*.js'],
-        tasks: ['less', 'concat', 'uglify']
+        files: [
+          '<%= paths.csslib %>/**/*.less', 
+          '<%= paths.jslib %>/**/*.js'
+        ],
+        tasks: ['less', 'string-replace', 'concat', 'uglify']
       },
     },
 

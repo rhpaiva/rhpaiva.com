@@ -9,11 +9,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{post_title}}</title>
+        <title>{{page_title}}</title>
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link href='http://fonts.googleapis.com/css?family=Imprima&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/blog-0.0.1.css">
         <!--<script src="/js/vendor/modernizr-2.6.2.min.js"></script>-->
     </head>
@@ -25,15 +24,15 @@
 
         <p class="hidden"><a href="#content">{{ lang.goToContent }}</a></p>
 
-        <header role="banner">
+        <header role="banner" class="banner">
             <div id="me">
-                <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"><a href="/">Rodrigo Paiva</a></h1>
+                <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a></h1>
             </div>
 
             <nav>
                 <ul>
-                    <li><a href="/{{ vars.language }}/archive.html" title="{{ lang.listOfPosts }}">{{ lang.archive }}</a></li>
                     <li><a href="/{{ vars.language }}/whoami.html" title="{{ lang.whoAmI }}?">{{ lang.whoAmI }}?</a></li>
+                    <li><a href="/{{ vars.language }}/archive.html" title="{{ lang.listOfPosts }}">{{ lang.archive }}</a></li>
                 </ul>
             </nav>
 
@@ -45,11 +44,24 @@
             </ul>
         </header>
 
-        <article id="content">
-            <h1>{{post_title}}</h1>
+        <section id="content">
+            <main>
+                <article>
+                    {% block page_title %}<h1>{{page_title}}</h1>{% endblock %}
 
-            {% block post_content %}{% endblock %}
-        </article>
+                    {% block page_content %}{% endblock %}
+                </article>
+            </main>
+            <hr class="footer">
+            <footer>
+                <ul class="list-inline">
+                    <li>Facebook</li>
+                    <li>Github</li>
+                    <li>Linkedin</li>
+                    <li>Xing</li>
+                </ul>
+            </footer>            
+        </section>
 
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

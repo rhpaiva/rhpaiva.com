@@ -8,22 +8,26 @@ import os.path
 app = Flask(__name__)
 
 supported_languages = set(['pt', 'en', 'de'])
-post_file           = 'posts/%(lang)s/%(post)s.html'
+page_file           = 'pages/%(lang)s/%(page)s.html'
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+@app.route('/en/')
+def route_home():
+    index = read_json('posts.json')
+    vars  = {'posts': index['posts']['en'], 'format_datetime': format_datetime}
+
+    return render_page('en', 'index', vars)
 
 # TODO: we should really create "catchers" for each param here instead of
 # checking them inside the function
-@app.route('/<language>/<post_uri>.html')
-def post(language, post_uri):
-    return render_post(language, post_uri)
+@app.route('/<language>/<page_uri>.html')
+def route_page(language, page_uri):
+    return render_page(language, page_uri)
 
-def render_post(language, post_uri):
-    is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', post_uri)
+def render_page(language, page_uri, vars = {}):
+    is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', page_uri)
     is_valid_language = language in supported_languages
-    path              = post_file % {'lang': language, 'post': post_uri}
+    path              = page_file % {'lang': language, 'page': page_uri}
 
     if (
         not is_valid_name or
@@ -32,15 +36,20 @@ def render_post(language, post_uri):
     ):
         return render_template('404.html'), 404
 
-    i18n = read_json('i18n/pt.json')
+    i18n = read_json('i18n/' + language + '.json')
 
-    return render_template(path, 
-            lang = i18n, 
-            vars = {
-                'post_uri': post_uri, 
-                'language': language
-            }
-    )
+    vars['language'] = language
+
+    return render_template(path, lang = i18n, vars = vars)
+
+def create_slug(string):
+    import unicodedata
+
+    string = string.replace('?', '').replace('!', '').replace(' ', '-').lower()
+    string = unicode(string, 'utf-8')
+
+    return ''.join(c for c in unicodedata.normalize('NFD', string)
+            if unicodedata.category(c) != 'Mn')
 
 def read_json(path):
     try:
@@ -50,6 +59,11 @@ def read_json(path):
         raise e
 
     return data
+
+def format_datetime(date, output_format, input_format = '%Y-%m-%d'):
+    from datetime import datetime
+
+    return datetime.strptime(date, input_format).strftime(output_format)
 
 
 # Using 'open' here to avoid a race condition. More on this:

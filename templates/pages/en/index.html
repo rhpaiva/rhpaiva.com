@@ -1,0 +1,12 @@
+{% set page_title = "Rodrigo Paiva (rhpaiva)" %}
+{% extends "page.html" %}
+{% block page_title %}<h1>Latest posts</h1>{% endblock %}
+
+{% block page_content %}
+<ul class="posts-list">
+{% for post in vars.posts %}
+    {% set date = vars.format_datetime(post.date, lang.dateFormat) %}
+    <li>{{date}} - <a href="{{post.uri}}">{{post.title}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

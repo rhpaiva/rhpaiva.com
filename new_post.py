@@ -2,35 +2,38 @@
 
 # Creates a new post entry
 def create(config):
+    from app import create_slug
 
-    template = 'post' if config.template == None else config.template
+    template = 'page' if config.template == None else config.template
 
-    new_post_template  = '{%% set post_title = "%s" %%}' % config.title
+    new_post_template  = '{%% set page_title = "%s" %%}' % config.title
     new_post_template += '\n{%% extends "%s.html" %%}' % template
-    new_post_template += '\n\n{% block post_content %}\npost content\n{% endblock %}'
+    new_post_template += '\n\n{% block page_content %}\npage content\n{% endblock %}'
 
-    file_name = config.lang + '/' + config.title + '.html'
+    file_name = config.lang + '/' + create_slug(config.title) + '.html'
 
     try:
-        with open('templates/posts/' + file_name, 'w') as new_file:
+        with open('templates/pages/' + file_name, 'w') as new_file:
             new_file.write(new_post_template)
     except Exception, e:
         raise e
     else:
-        print "\n>>> New post created: %s" % file_name
+        print "\n>>> New post created: %s\n" % file_name
         return file_name
 
 # Updates the index file with a new node representing the new post
 def update_index(node):
-    from app import read_json
     import json
 
-    index = read_json('index.json')
-
-    index['posts'].append(node)
-
     try:
-        with open('index.json', 'w+') as json_file:
+        with open('posts.json', 'rw+') as json_file:
+            index = json.load(json_file)
+
+            index['posts'][node['lang']].append(node)
+
+            # set the file pointer to the beginning
+            json_file.seek(0)
+
             json.dump(index, json_file, indent = 4)
     except Exception, e:
         raise e
@@ -47,6 +50,7 @@ def parse_args():
     parser.add_argument('-l', '--lang', help = 'Post language', required = True)
     parser.add_argument('-t', '--title', help = 'Post title', required = True)
     parser.add_argument('-tp', '--template', help = 'Template used', required = False)
+    parser.add_argument('-n', '--noupdate', action='store_true', help = "Don't update index", required = False)
 
     return parser.parse_args()
 
@@ -59,13 +63,12 @@ if __name__ == '__main__':
         new_node  = {
             'date' : datetime.now().strftime('%Y-%m-%d'),
             'title': args.title,
+            'lang' : args.lang,
             'uri'  : '/' + file_name
         }
 
-        index = update_index(new_node)        
+        if args.noupdate == False:
+            update_index(new_node)
+            print ">>> Posts index successfully updated with entry: \n{0}\n".format(new_node)
     except Exception, e:
         raise e
-
-    print "\n>>> Posts index successfully updated with entry: {0}\n".format(new_node)
-
-    #update_index(new_node['posts'])

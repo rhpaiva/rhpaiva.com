@@ -2,9 +2,9 @@
     #BoxModel > .border;
 }
 
-header[role="banner"] {
+.banner {
     #Shadow > .box-bottom(7px, 10px);
-    background: fade(#000, 50%) url('@{path-img}/pics/small/3.jpg') 0 -50px no-repeat;
+    background: fade(#000, 50%) url('@{path-img}/pics/small/%banner_number%.jpg') 0 -50px no-repeat;
     border-bottom: 15px solid fade(#000, 30%);
     position: relative;
     height: @header-height-small;
@@ -13,6 +13,7 @@ header[role="banner"] {
         color: #fff;
         text-decoration: none;
         #Font > .title;
+        #Shadow > .text(#000, 1px, 1px, 0);
 
         &:hover {
             text-decoration: underline;
@@ -114,16 +115,19 @@ header[role="banner"] {
     background: fade(#48634C, 90%);
 }
 
-article {
+#content {
+    margin: 1.2em;
+
     & h1,
     & h2,
     & h3 {
         #Font > .title;
+        color: #333;
     }
-}
 
-#content {
-    margin: 1.2em;
+    h1 {
+        color: #4C5A5E;
+    }
 }
 
 .pull-right {

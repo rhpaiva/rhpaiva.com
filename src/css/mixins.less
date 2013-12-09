@@ -1,4 +1,4 @@
-@color-text-font: #444;
+@color-text-font: #000;
 @color-header-bg: #fff;
 @color-header-dark: #153042;
 
@@ -18,7 +18,7 @@
         font-weight: 300;
     }
     .text() {
-        font-family: 'Imprima', Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-family: 'Source Sans Pro', Arial, "Helvetica Neue", Helvetica, sans-serif;
         font-weight: 300;
     }
 }
@@ -62,8 +62,9 @@
         -moz-box-shadow:    @arguments;
         box-shadow:         @arguments;
     }
-    .text() {
-        //filter: dropshadow(color=#333, offx=1, offy=1);
+    .text(@color: #333, @x: 1px, @y: 1px, @blur: 1px) {
+        text-shadow: @x @y @blur @color;
+        filter: dropshadow(color = @color, offx = @x, offy = @y);
     }
 }
 

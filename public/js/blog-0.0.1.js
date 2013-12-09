@@ -1,4 +1,4 @@
-/*! blog - v0.0.1 - 2013-12-08
+/*! blog - v0.0.1 - 2013-12-09
 * Copyright (c) 2013 Rodrigo Paiva; Licensed  */
 'use strict';
 
