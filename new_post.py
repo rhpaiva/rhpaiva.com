@@ -7,8 +7,17 @@ def create(config):
     template = 'page' if config.template == None else config.template
 
     new_post_template  = '{%% set page_title = "%s" %%}' % config.title
+    new_post_template += '\n{% set page_description = "description" %}'
     new_post_template += '\n{%% extends "%s.html" %%}' % template
-    new_post_template += '\n\n{% block page_content %}\npage content\n{% endblock %}'
+    new_post_template += \
+    """
+
+    {% block page_content %}
+    <article>
+        <h1>{{page_title}}</h1>
+        contento!
+    </article>
+    {% endblock %}"""
 
     file_name = config.lang + '/' + create_slug(config.title) + '.html'
 

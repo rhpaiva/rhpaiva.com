@@ -12,6 +12,16 @@
         <title>{{page_title}}</title>
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+        <meta property="og:url" content="http://www.rhpaiva.com">
+        <meta property="og:title" content="{{page_title}}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" />
+        <meta property="og:site_name" content="Mozilla Developer Network" />
+        <meta property="og:description" content="{{page_description}}" />
+
+        <meta name="description" content="{{page_description}}">
+        <meta name="author" content="Rodrigo Paiva <rhpaiva@gmail.com>">
+
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/blog-0.0.1.css">
         <!--<script src="/js/vendor/modernizr-2.6.2.min.js"></script>-->
@@ -28,14 +38,12 @@
             <div id="me">
                 <h1><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a></h1>
             </div>
-
             <nav>
                 <ul>
                     <li><a href="/{{ vars.language }}/whoami.html" title="{{ lang.whoAmI }}?">{{ lang.whoAmI }}?</a></li>
                     <li><a href="/{{ vars.language }}/archive.html" title="{{ lang.listOfPosts }}">{{ lang.archive }}</a></li>
                 </ul>
             </nav>
-
             <!--<span class="menuIcon">&#9776;</span>-->
             <ul class="languages list-inline" role="navigation">
                 <li><a href="/pt/" title="Versão em Português" class="lang-pt"><abbr title="Português">PT</abbr></a></li>
@@ -46,11 +54,7 @@
 
         <section id="content">
             <main>
-                <article>
-                    {% block page_title %}<h1>{{page_title}}</h1>{% endblock %}
-
-                    {% block page_content %}{% endblock %}
-                </article>
+                {% block page_content %}{% endblock %}
             </main>
             <hr class="footer">
             <footer>

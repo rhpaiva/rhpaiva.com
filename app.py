@@ -2,7 +2,6 @@ from flask import Flask
 from flask import render_template
 
 import json
-import re as regexp
 import os.path
 
 app = Flask(__name__)
@@ -25,6 +24,8 @@ def route_page(language, page_uri):
     return render_page(language, page_uri)
 
 def render_page(language, page_uri, vars = {}):
+    import re as regexp
+
     is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', page_uri)
     is_valid_language = language in supported_languages
     path              = page_file % {'lang': language, 'page': page_uri}

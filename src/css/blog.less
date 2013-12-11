@@ -2,6 +2,23 @@
     #BoxModel > .border;
 }
 
+a {
+    #Fx > .transition;
+    color: #5281CC;
+    text-decoration: none;
+
+    &:hover,
+    &:hover:visited {
+        color: #235099;
+        text-decoration: underline;
+    }
+
+    &:visited {
+        color: #999;
+        text-decoration: underline;
+    }
+}
+
 .banner {
     #Shadow > .box-bottom(7px, 10px);
     background: fade(#000, 50%) url('@{path-img}/pics/small/%banner_number%.jpg') 0 -50px no-repeat;
@@ -78,7 +95,7 @@
         z-index: 11;
 
         img {
-            #Border > .rounded;
+            #Border > .rounded(1000px);
             #Shadow > .custom(0 0 0 5px fade(#000, 30%));
             margin: 0 10px;
             width: 50px;
@@ -116,7 +133,7 @@
 }
 
 #content {
-    margin: 1.2em;
+    padding: 1.2em;
 
     & h1,
     & h2,
@@ -130,10 +147,29 @@
     }
 }
 
+.posts-list {
+    #Reset > .marginPadding;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+    li {
+        margin: 10px 0;
+    }
+
+    span {
+        color: #ccc;
+    }
+}
+
 .pull-right {
     float: right;
 }
 
 .list-inline li {
     display: inline-block;
+}
+
+.list-nobullets {
+    list-style: none;
+    list-style-image: none;    
 }
