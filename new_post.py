@@ -6,18 +6,26 @@ def create(config):
 
     template = 'page' if config.template == None else config.template
 
-    new_post_template  = '{%% set page_title = "%s" %%}' % config.title
-    new_post_template += '\n{% set page_description = "description" %}'
-    new_post_template += '\n{%% extends "%s.html" %%}' % template
-    new_post_template += \
-    """
+    vars = {
+        'title'   : config.title,
+        'template': template,
+        'date'    : '{{vars.format_datetime(post_date, lang.dateFormat)}}'
+    }
 
-    {% block page_content %}
-    <article>
-        <h1>{{page_title}}</h1>
-        contento!
-    </article>
-    {% endblock %}"""
+    new_post_template  = \
+"""{%% set page_title = "%(title)s" %%}
+{%% set page_description = "" %%}'
+{%% set post_date = "" %%}
+{%% extends "%(template)s.html" %%}
+
+{%% block page_content %%}
+<article>
+    <h1>{{page_title}}</h1>
+    <p class="post-date">
+        <i>Posted on %(date)s</i><
+    /p>
+</article>
+{%% endblock %%}""" % vars
 
     file_name = config.lang + '/' + create_slug(config.title) + '.html'
 

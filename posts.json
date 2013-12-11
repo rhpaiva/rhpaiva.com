@@ -1,6 +1,25 @@
 {
     "posts": {
-        "de": [], 
+        "de": [
+            {
+                "date": "2013-12-11", 
+                "lang": "de", 
+                "uri": "/de/mein-erste-post.html", 
+                "title": "Mein erste Post!"
+            }, 
+            {
+                "date": "2013-12-11", 
+                "lang": "de", 
+                "uri": "/de/mein-zweite-post.html", 
+                "title": "Mein zweite Post!"
+            }, 
+            {
+                "date": "2013-12-11", 
+                "lang": "de", 
+                "uri": "/de/mein-drite-post.html", 
+                "title": "Mein drite Post!"
+            }
+        ], 
         "en": [
             {
                 "date": "2013-12-09", 
@@ -51,6 +70,19 @@
                 "title": "bohemian rapsody!"
             }
         ], 
-        "pt": []
+        "pt": [
+            {
+                "date": "2013-12-11", 
+                "lang": "pt", 
+                "uri": "/pt/teste-com-baratinhos.html", 
+                "title": "Teste com baratinhos"
+            }, 
+            {
+                "date": "2013-12-11", 
+                "lang": "pt", 
+                "uri": "/pt/teste-com-baratinhos.html", 
+                "title": "Teste com baratinhos"
+            }
+        ]
     }
 }

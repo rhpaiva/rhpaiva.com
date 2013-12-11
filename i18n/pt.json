@@ -1,4 +1,5 @@
 {
+    "dateFormat" : "%m/%d/%Y",
     "goToContent": "Ir para o conteúdo",
     "archive"    : "Arquivo",
     "whoAmI"     : "Quem sou eu",

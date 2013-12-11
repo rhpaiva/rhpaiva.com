@@ -11,23 +11,19 @@
 // big screens
 @media only screen and (min-width: 1025px) {
     body {
-        //width: 99%;
-        margin: 0 auto;
+      width: 1000px;
+      margin: 0 auto;
     }
 
     .banner {
-        max-width: 1280px;
-        margin: auto;
-        background: fade(#000, 50%) url('@{path-img}/pics/big/%banner_number%.jpg') 0 -100px no-repeat;    
+      font-size: 20px;
+
+      h1 {
+        font-size: 42px;
+      }
     }
 
-    
     #content {
-        margin: 0 auto;
-        //padding: 3px;
-        //background: fade(#036, 10%);
-        max-width: 1280px;
-
         h1 {
           font-size: 2.6em;
         }
@@ -37,28 +33,27 @@
         h3 {
           font-size: 1.5em;
         }
-    }
 
-    hr.footer {
-      //display: none;
+        footer p,
+        footer .social {
+          #Reset > .marginPadding;
+          display: inline-block;
+        }
     }
 
     .posts-list {
         #Reset > .marginPadding;
-        font-size: 26px;
+        font-size: 22px;
         margin-top: 20px;
+    }
 
-        li {
-            //margin: 1.5em 0;
-        }
+    .social {
+      .pull-right;
     }
 }
 
 // medium screens
 @media only screen and (min-width: 701px) and (max-width: 1024px) {
-    .banner {
-        background: fade(#000, 50%) url('@{path-img}/pics/medium/%banner_number%.jpg') 0 -100px no-repeat;    
-    }
 }
 
 @media print,

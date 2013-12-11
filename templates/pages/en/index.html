@@ -1,11 +1,12 @@
 {% set page_title = "Rodrigo Paiva (rhpaiva)" %}
-{% set page_description = "Page desc =D" %}
+{% set page_description = "Archive of posts in English" %}
 {% extends "page.html" %}
+{% set disable_comments = True %}
 
 {% block page_content %}
     <article>
         <ul class="posts-list list-nobullets">
-        {% for post in vars.posts %}
+        {% for post in vars.posts|reverse %}
             <li><span>{{vars.format_datetime(post.date, lang.dateFormat)}}</span> <a href="{{post.uri}}">{{post.title}}</a></li>
         {% endfor %}
         </ul>

@@ -1,5 +1,6 @@
 {
     "dateFormat" : "%m/%d/%Y",
+
     "goToContent": "Go to the content",
     "archive"    : "Archive",
     "whoAmI"     : "Who am I",

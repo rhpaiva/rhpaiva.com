@@ -1,0 +1,13 @@
+{% set page_title = "Mein drite Post!" %}
+{% set page_description = "" %}'
+{% set post_date = "" %}
+{% extends "page.html" %}
+
+{% block page_content %}
+<article>
+    <h1>{{page_title}}</h1>
+    <p class="post-date">
+        <i>Posted on {{vars.format_datetime(post_date, lang.dateFormat)}}</i><
+    /p>
+</article>
+{% endblock %}

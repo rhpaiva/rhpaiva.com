@@ -10,12 +10,17 @@ supported_languages = set(['pt', 'en', 'de'])
 page_file           = 'pages/%(lang)s/%(page)s.html'
 
 @app.route('/')
-@app.route('/en/')
-def route_home():
-    index = read_json('posts.json')
-    vars  = {'posts': index['posts']['en'], 'format_datetime': format_datetime}
+@app.route('/<language>/')
+def route_home(language = 'en'):
+    is_valid_language = language in supported_languages
 
-    return render_page('en', 'index', vars)
+    if not is_valid_language:
+        return render_template('404.html'), 404
+
+    index = read_json('posts.json')['posts'][language]
+    vars  = {'posts': index, 'format_datetime': format_datetime}
+
+    return render_page(language, 'index', vars)
 
 # TODO: we should really create "catchers" for each param here instead of
 # checking them inside the function
@@ -39,7 +44,8 @@ def render_page(language, page_uri, vars = {}):
 
     i18n = read_json('i18n/' + language + '.json')
 
-    vars['language'] = language
+    vars['language']                  = language
+    vars['format_datetime'] = format_datetime
 
     return render_template(path, lang = i18n, vars = vars)
 
