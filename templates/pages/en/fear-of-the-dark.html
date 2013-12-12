@@ -1,12 +1,14 @@
+{% extends "page.html" %}
 {% set page_title = "Fear of the dark }:D" %}
 {% set page_description = "description" %}
 {% set post_date = "2013-12-10" %}
-{% extends "page.html" %}
 
 {% block page_content %}
-    <article>
-        <h1>{{page_title}}</h1>
-        <p class="post-date"><i>Posted on {{vars.format_datetime(post_date, lang.dateFormat)}}</i></p>
-        contento!
-    </article>
+    {{ macros.post_base(page_title, post_date, lang, vars) }}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis modi maiores harum beatae impedit? Quidem, distinctio, similique cumque dignissimos beatae voluptatum quae ab ullam molestiae fugit soluta fugiat cupiditate doloribus libero rerum sit maxime officiis aliquam temporibus ratione repudiandae est dolor reprehenderit. Dignissimos, magni harum quaerat fugiat cumque sapiente unde autem praesentium perspiciatis nihil? Accusantium, necessitatibus, debitis eaque libero vitae possimus delectus mollitia iure vero omnis dolorum esse aut amet tempore veniam dolorem ullam beatae quia fugit eos nihil earum quaerat. Dignissimos, tempore, itaque, necessitatibus vel pariatur recusandae iusto porro consectetur at architecto omnis hic harum. A, dolorum similique aspernatur?</p>
+
+    <section>
+        <h2>h2 cutie!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, nihil, placeat iusto magnam autem explicabo laborum id ad ullam inventore pariatur consequuntur corporis et quasi iste molestiae repellat adipisci eum voluptate a alias vero ipsa. Officiis, delectus nostrum maiores necessitatibus atque sequi ut ipsum illo earum quisquam provident voluptatibus odio.</p>
+    </section>
 {% endblock %}

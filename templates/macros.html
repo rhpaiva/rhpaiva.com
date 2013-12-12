@@ -1,0 +1,6 @@
+{% macro post_base(title, date, lang, vars, comments = False) -%}
+    <header>
+        <h1>{{title}}</h1>
+        <small class="post-date">{{lang.postedOn}} <span>{{vars.format_datetime(date, lang.dateFormat)}}</span></small>
+    </header>
+{%- endmacro %}

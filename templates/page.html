@@ -1,3 +1,4 @@
+{% import 'macros.html' as macros %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -35,9 +36,7 @@
         <p class="hidden"><a href="#content">{{ lang.goToContent }}</a></p>
 
         <header role="banner" class="banner">
-            <div id="me">
-                <h1><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"></h1>
-            </div>
+            <h1 id="me"><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"></h1>
             <nav>
                 <ul class="nav-menu" class="list-inline">
                     <li><a href="/{{ vars.language }}/whoami.html" title="{{ lang.whoAmI }}?">{{ lang.whoAmI }}?</a></li>
@@ -53,26 +52,39 @@
 
         </header>
         <hr>
-        <section id="content">
-            <main>
-                {% block page_content %}{% endblock %}
-                {% if not disable_comments %}
+        <main id="content" role="main">
+            <article>
+            {% block page_content %}{% endblock %}
+            <div id="share">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                    <a class="addthis_button_facebook"></a>
+                    <a class="addthis_button_twitter"></a>
+                    <a class="addthis_button_linkedin"></a>
+                    <a class="addthis_button_google_plusone_share"></a>
+                    <a class="addthis_button_digg"></a>
+                    <a class="addthis_button_delicious"></a>
+                    <a class="addthis_button_evernote"></a>
+                    <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+            </div>
+            {% if not disable_comments %}
                 <div id="disqus">
                     <div id="disqus_thread"></div>
                 </div>
-                {% endif %}
-            </main>
-            <hr>
-            <footer>
-                <p>Made with &hearts; using Python, Flask and Nginx</p>
-                <ul class="social list-inline">
-                    <li><a href="http://www.facebook.com/rhpaiva" title="My profile on Facebook"><span class="icon-facebook-rect"></span> Facebook</a></li>
-                    <li><a href="http://www.github.com/rhpaiva" title="My profile on Github"><span class="icon-github-circled"></span> Github</a></li>
-                    <li><a href="http://linkedin.com/in/rodrigopaiva1" title="My profile on Linkedin"><span class="icon-linkedin-rect"></span> Linkedin</a></span></li>
-                    <li><a href="http://www.xing.com/profiles/Rodrigo_Paiva2" title="My profile on Xing"><span class="icon-xing"></span> Xing</a></li>
-                </ul>
-            </footer>
-        </section>
+            {% endif %}
+            </article>
+        </main>
+        <hr>
+        <footer>
+            <p>Made with &hearts; using Python, Flask and Nginx</p>
+            <ul class="social list-inline">
+                <li><a href="http://www.facebook.com/rhpaiva" title="My profile on Facebook"><span class="icon-facebook-rect"></span> Facebook</a></li>
+                <li><a href="http://www.github.com/rhpaiva" title="My profile on Github"><span class="icon-github-circled"></span> Github</a></li>
+                <li><a href="http://linkedin.com/in/rodrigopaiva1" title="My profile on Linkedin"><span class="icon-linkedin-rect"></span> Linkedin</a></span></li>
+                <li><a href="http://www.xing.com/profiles/Rodrigo_Paiva2" title="My profile on Xing"><span class="icon-xing"></span> Xing</a></li>
+            </ul>
+        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
@@ -91,6 +103,17 @@
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
+
+            /*(function () {
+                var s = document.createElement('script'); s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);*/
+
+            var addthis_config = {"data_track_addressbar":true}
+        </script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52a8217e7756a5dd"></script>
+
         </script>
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         {% endif %}

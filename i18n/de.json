@@ -3,5 +3,7 @@
     "goToContent": "Direkt zum Inhalt",
     "archive"    : "Archiv",
     "whoAmI"     : "Wer bin ich",
-    "listOfPosts": "Liste von Posten"
+    "listOfPosts": "Liste von Posten",
+    "postedOn"   : "Gepostet am",
+    "comments"   : "Kommentar(e)"
 }

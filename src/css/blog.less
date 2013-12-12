@@ -2,6 +2,15 @@
     #BoxModel > .border;
 }
 
+html[lang='en'] {
+    border-top: 5px solid @base-color-en;
+}
+html[lang='pt'] {
+    border-top: 5px solid @base-color-pt;
+}
+html[lang='de'] {
+    border-top: 5px solid @base-color-de;
+}
 body {
     margin: 20px;
 }
@@ -23,30 +32,28 @@ a {
 }
 
 #me {
-    h1 {
-        font-weight: 300;
-        text-align: center;
-        #Shadow > .text(@text-shadow, 1px, 1px, 0);
+    font-weight: 300;
+    text-align: center;
+    #Shadow > .text(@text-shadow, 1px, 1px, 0);
 
-        img {
-            border: 1px solid transparent;
-            margin-left: 20px;
-            #Border > .rounded(1000px);
-            #Shadow > .custom(0 0 0 5px fade(#000, 20%));
-            #Fx > .transition;
+    img {
+        border: 1px solid transparent;
+        margin-left: 20px;
+        #Border > .rounded(1000px);
+        #Shadow > .custom(0 0 0 2px fade(#000, 20%));
+        #Fx > .transition;
 
-            &:hover {
-                #Shadow > .custom(0 0 0 5px fade(#000, 50%));
-            }
+        &:hover {
+            #Shadow > .custom(0 0 0 5px fade(#000, 50%));
         }
+    }
 
-        a {
-            color: @text-color-light;
-            text-decoration: none;
+    a {
+        color: @text-color-light;
+        text-decoration: none;
 
-            &:hover {
-                color: @link-color-hover;
-            }
+        &:hover {
+            color: @link-color-hover;
         }
     }
 }
@@ -91,13 +98,13 @@ a {
 }
 
 .lang-pt:hover {
-    background: lighten(#48634C, 20%);
+    background: @base-color-pt;
 }
 .lang-en:hover {
-    background: lighten(#3A5270, 20%);
+    background: @base-color-en;
 }
 .lang-de:hover {
-    background: lighten(#000, 30%);
+    background: @base-color-de;
 }
 
 #content {
@@ -107,26 +114,46 @@ a {
         #Shadow > .text(@text-shadow, 1px, 1px, 0);
         color: @text-color-headings;
         font-weight: 300;
+        margin-bottom: 10px;
+
+        & + p {
+            margin-top: 0;
+        }
+    }
+
+    & h2,
+    & h3 {
         text-transform: uppercase;
     }
 
     a:hover {
         #Border > .rounded(1000px);
     }
+}
 
-    footer {
-        color: @text-color-light;
+article {
+    header {
+        margin-bottom: 30px;
+
+        h1 {
+            #Reset > .marginPadding;
+        }
+    }
+}
+
+footer {
+    color: @text-color-light;
+}
+
+.social {
+    #Reset > .marginPadding;
+
+    li {
+        margin-left: 10px;
     }
 
-    #disqus {
-        #Border > .rounded;
-        margin: 100px auto 50px;
-        padding: 5px;
-        background: fade(#fff, 80%);
-    }
-
-    #disqus_thread {
-        padding: 20px;
+    li:first-child {
+        margin-left: 0;
     }
 }
 
@@ -141,21 +168,16 @@ a {
 
     span {
         color: lighten(@text-color, 70%);
-        margin-right: 20px;
+        margin-right: 10px;
     }
 }
 
 .post-date {
     color: lighten(@text-color, 50%);
-    display: block;
-    text-align: right;
-}
+    text-transform: uppercase;
 
-.social {
-    #Reset > .marginPadding;
-
-    li {
-        margin-left: 10px;
+    span {
+        color: @text-color;
     }
 }
 
@@ -172,5 +194,23 @@ a {
     list-style-image: none;
 }
 
-.dsq-brlink {display:none;}
-.logo-disqus {display:none;}
+#share {
+    text-align: right;
+    margin-top: 30px;
+    padding: 10px;
+    background: fade(#fff, 55%);
+    display: inline-block;
+    #Border > .rounded;
+    clear: both;
+}
+
+#disqus {
+    #Border > .rounded;
+    margin: 0px auto 50px;
+    padding: 5px;
+    background: fade(#fff, 55%);
+}
+
+#disqus_thread {
+    padding: 20px;
+}

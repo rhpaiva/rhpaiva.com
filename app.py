@@ -44,8 +44,9 @@ def render_page(language, page_uri, vars = {}):
 
     i18n = read_json('i18n/' + language + '.json')
 
-    vars['language']                  = language
+    vars['language']        = language
     vars['format_datetime'] = format_datetime
+    vars['uri']             = language + '/' + page_uri
 
     return render_template(path, lang = i18n, vars = vars)
 
@@ -69,9 +70,7 @@ def read_json(path):
 
 def format_datetime(date, output_format, input_format = '%Y-%m-%d'):
     from datetime import datetime
-
     return datetime.strptime(date, input_format).strftime(output_format)
-
 
 # Using 'open' here to avoid a race condition. More on this:
 # stackoverflow.com/questions/82831/how-do-i-check-if-a-file-exists-using-python
@@ -87,5 +86,7 @@ def error_not_found(error):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
+    # register the filter
+    app.jinja_env.filters['format_datetime'] = format_datetime
     app.run(debug = True)
     #app.run()

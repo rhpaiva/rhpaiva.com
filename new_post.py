@@ -8,8 +8,7 @@ def create(config):
 
     vars = {
         'title'   : config.title,
-        'template': template,
-        'date'    : '{{vars.format_datetime(post_date, lang.dateFormat)}}'
+        'template': template
     }
 
     new_post_template  = \
@@ -19,12 +18,9 @@ def create(config):
 {%% extends "%(template)s.html" %%}
 
 {%% block page_content %%}
-<article>
-    <h1>{{page_title}}</h1>
-    <p class="post-date">
-        <i>Posted on %(date)s</i><
-    /p>
-</article>
+    {{ macros.post_base(page_title, post_date, lang, vars) }}
+<p>content</p>
+
 {%% endblock %%}""" % vars
 
     file_name = config.lang + '/' + create_slug(config.title) + '.html'

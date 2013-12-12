@@ -4,15 +4,11 @@
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (max-width:700px) {
-    //background: fade(#000, 50%) url('@{path-img}/pics/small/1.jpg') 0 -50px no-repeat;    
-}
-
 // big screens
 @media only screen and (min-width: 1025px) {
     body {
       width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
 
     .banner {
@@ -33,27 +29,27 @@
         h3 {
           font-size: 1.5em;
         }
-
-        footer p,
-        footer .social {
-          #Reset > .marginPadding;
-          display: inline-block;
-        }
     }
 
     .posts-list {
         #Reset > .marginPadding;
-        font-size: 22px;
+        font-size: 26px;
         margin-top: 20px;
+        text-transform: none;
+    }
+}
+
+// from medium screens on
+@media only screen and (min-width: 800px) {
+    footer p,
+    footer .social {
+      #Reset > .marginPadding;
+      display: inline-block;
     }
 
     .social {
       .pull-right;
     }
-}
-
-// medium screens
-@media only screen and (min-width: 701px) and (max-width: 1024px) {
 }
 
 @media print,

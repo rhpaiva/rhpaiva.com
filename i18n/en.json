@@ -4,5 +4,7 @@
     "goToContent": "Go to the content",
     "archive"    : "Archive",
     "whoAmI"     : "Who am I",
-    "listOfPosts": "List of posts"
+    "listOfPosts": "List of posts",
+    "postedOn"   : "Posted on",
+    "comments"   : "Comment(s)"
 }
