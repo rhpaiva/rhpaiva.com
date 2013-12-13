@@ -4,13 +4,53 @@
 
 html[lang='en'] {
     border-top: 5px solid @base-color-en;
+
+    .post-tag {
+        background: lighten(@base-color-en, 30%);
+    }
+
+    .snippet {
+        background: fade(@base-color-en, 10%);
+
+        code {
+            border: 1px solid lighten(@base-color-en, 35%);
+            background: fade(#fff, 70%);
+        }
+    }
 }
 html[lang='pt'] {
     border-top: 5px solid @base-color-pt;
+
+    .post-tag {
+        background: lighten(@base-color-pt, 30%);
+    }
+
+    .snippet {
+        background: fade(@base-color-pt, 10%);
+
+        code {
+            border: 1px solid lighten(@base-color-pt, 20%);
+            background: fade(#fff, 70%);
+        }
+    }
 }
 html[lang='de'] {
     border-top: 5px solid @base-color-de;
+
+    .post-tag {
+        background: lighten(@base-color-de, 35%);
+    }
+
+    .snippet {
+        background: fade(@base-color-de, 10%);
+
+        code {
+            border: 1px solid lighten(@base-color-de, 40%);
+            background: fade(#fff, 80%);
+        }
+    }
 }
+
 body {
     margin: 20px;
 }
@@ -21,20 +61,16 @@ a {
     text-decoration: none;
 
     &:hover,
-    &:hover:visited {
-        color: @link-color-hover;
+    &:visited:hover {
+        color: @link-color-hover !important;
         text-decoration: underline;
-    }
-
-    &:visited {
-        color: @link-color-visited;
     }
 }
 
 #me {
     font-weight: 300;
     text-align: center;
-    #Shadow > .text(@text-shadow, 1px, 1px, 0);
+    #Shadow > .text(@text-color-shadow, 1px, 1px, 0);
 
     img {
         border: 1px solid transparent;
@@ -67,7 +103,9 @@ a {
         #Reset > .marginPadding;
         display: inline-block;
     }
+
     a {
+        font-weight: 400;
         padding: 8px 10px;
         #Fx > .transition(background);
 
@@ -82,7 +120,7 @@ a {
         padding-left: 0;
     }
 }
- 
+
 .nav-languages {
     .pull-right;
 
@@ -92,7 +130,7 @@ a {
 
     a:hover,
     a:visited:hover {
-        color: @text-shadow;
+        color: #fff !important;
         text-decoration: none;
     }
 }
@@ -107,27 +145,33 @@ a {
     background: @base-color-de;
 }
 
-#content {
-    & h1,
-    & h2,
-    & h3 {
-        #Shadow > .text(@text-shadow, 1px, 1px, 0);
+main {
+    h1,
+    h2,
+    h3 {
+        #Shadow > .text(@text-color-shadow, 1px, 1px, 0);
         color: @text-color-headings;
         font-weight: 300;
-        margin-bottom: 10px;
 
-        & + p {
+        + p {
             margin-top: 0;
         }
     }
 
-    & h2,
-    & h3 {
+    h2,
+    h3 {
         text-transform: uppercase;
+        margin: 40px 0 10px;
     }
 
-    a:hover {
-        #Border > .rounded(1000px);
+    a {
+        font-weight: 400;
+        &:hover {
+            #Border > .rounded(1000px);
+        }
+        &:visited {
+            color: @link-color-visited;
+        }
     }
 }
 
@@ -175,10 +219,19 @@ footer {
 .post-date {
     color: lighten(@text-color, 50%);
     text-transform: uppercase;
+    margin-right: 5px;
 
     span {
         color: @text-color;
     }
+}
+
+.post-tag {
+    color: darken(@text-color-light, 50%);
+    padding: 1px 5px;
+    margin-left: 4px;
+    #Border > .rounded(2px);
+    #Shadow > .text(#fff);
 }
 
 .pull-right {
@@ -194,6 +247,19 @@ footer {
     list-style-image: none;
 }
 
+.snippet {
+    display: inline-block;
+    font-size: 13px;
+    padding: 10px;
+    #Border > .rounded;
+
+    code {
+        display: inline-block;
+        padding: 20px;
+        color: lighten(@text-color, 20%);
+    }
+}
+
 #share {
     text-align: right;
     margin-top: 30px;
@@ -202,6 +268,10 @@ footer {
     display: inline-block;
     #Border > .rounded;
     clear: both;
+
+    a {
+        margin-right: 10px;
+    }
 }
 
 #disqus {

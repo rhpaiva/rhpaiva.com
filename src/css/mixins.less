@@ -1,16 +1,17 @@
 @text-color: #000;
 @text-color-light: lighten(@text-color, 75%);
 @text-color-headings: lighten(@text-color, 10%);
-@text-shadow: #fff;
+@text-color-shadow: #fff;
 
-@base-color-pt: lighten(#48634C, 20%);
+@base-color-pt: lighten(#A9AB35, 15%);
 @base-color-en: lighten(#3A5270, 20%);
-@base-color-de: lighten(#BA4848, 10%);
+@base-color-de: lighten(#48634C, 10%); // red BA4848
 
+@link-color: darken(#5281CC, 5%);
+@link-color-hover: darken(@link-color, 30%);
+@link-color-visited: darken(#6F4891, 5%);
 
-@link-color: #5281CC;
-@link-color-hover: darken(@link-color, 25%);
-@link-color-visited: #917791;
+@tag-bg: fade(#ccc, 25%);
 
 @icon-menu: &#9776;
 
@@ -69,7 +70,7 @@
         -moz-box-shadow:    @arguments;
         box-shadow:         @arguments;
     }
-    .text(@color: #333, @x: 1px, @y: 1px, @blur: 1px) {
+    .text(@color: #333, @x: 1px, @y: 1px, @blur: 0px) {
         text-shadow: @x @y @blur @color;
         filter: dropshadow(color = @color, offx = @x, offy = @y);
     }

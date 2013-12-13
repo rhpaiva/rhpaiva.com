@@ -8,19 +8,30 @@ def create(config):
 
     vars = {
         'title'   : config.title,
-        'template': template
+        'template': template,
+        'tags'    : config.tags,
+        'date'    : datetime.now().strftime('%Y-%m-%d')
     }
 
-    new_post_template  = \
-"""{%% set page_title = "%(title)s" %%}
-{%% set page_description = "" %%}'
-{%% set post_date = "" %%}
-{%% extends "%(template)s.html" %%}
+    new_post_template = \
+"""{%% extends "%(template)s.html" %%}
+{%% set page_title = "%(title)s" %%}
+{%% set page_description = "" %%}
+{%% set post_tags = "%(tags)s" %%}
+{%% set post_date = "%(date)s" %%}
+{%% set disable_comments = False %%}
 
 {%% block page_content %%}
-    {{ macros.post_base(page_title, post_date, lang, vars) }}
-<p>content</p>
-
+    {{ macros.post_base({'title': page_title, 'date': post_date, 'tags': post_tags}, lang, vars) }}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Eum, quos, dolores, pariatur sint impedit atque repellat odit ad minima 
+    dolorem quia ipsa porro consequatur qui expedita. Qui, repellat alias non 
+    iste minima hic laboriosam minus recusandae quos exercitationem sapiente 
+    et optio dignissimos vitae consequatur esse porro consectetur sit eveniet 
+    mollitia voluptate delectus odio tempore eaque aspernatur adipisci 
+    quisquam suscipit rerum quasi possimus aperiam iusto ipsum reiciendis 
+    architecto sunt fugit iure maiores expedita voluptates ullam pariatur vel 
+    deserunt vero dolor omnis molestias?</p>
 {%% endblock %%}""" % vars
 
     file_name = config.lang + '/' + create_slug(config.title) + '.html'
@@ -57,13 +68,18 @@ def update_index(node):
 def parse_args():
     import argparse
 
-    desc = 'This is a generator that creates new posts for the blog'
+    desc = \
+    """This is a generator that creates new posts for the blog.
+    Example of usage:
+    new_post.py -l en -tt 'Creating a new post!' -tg 'python,flask,fancytag'
+    """
 
     parser = argparse.ArgumentParser(description = desc)
     parser.add_argument('-l', '--lang', help = 'Post language', required = True)
-    parser.add_argument('-t', '--title', help = 'Post title', required = True)
+    parser.add_argument('-tt', '--title', help = 'Post title', required = True)
+    parser.add_argument('-tg', '--tags', help = 'Post tags (separated by commas)', required = True)
     parser.add_argument('-tp', '--template', help = 'Template used', required = False)
-    parser.add_argument('-n', '--noupdate', action='store_true', help = "Don't update index", required = False)
+    parser.add_argument('-no', '--noupdate', action='store_true', help = "Don't update index", required = False)
 
     return parser.parse_args()
 
@@ -77,7 +93,8 @@ if __name__ == '__main__':
             'date' : datetime.now().strftime('%Y-%m-%d'),
             'title': args.title,
             'lang' : args.lang,
-            'uri'  : '/' + file_name
+            'uri'  : '/' + file_name,
+            'tags' : args.tags
         }
 
         if args.noupdate == False:

@@ -88,5 +88,5 @@ def error_not_found(error):
 if __name__ == '__main__':
     # register the filter
     app.jinja_env.filters['format_datetime'] = format_datetime
-    app.run(debug = True)
+    app.run(debug = True, host='0.0.0.0')
     #app.run()

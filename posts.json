@@ -82,6 +82,26 @@
                 "lang": "pt", 
                 "uri": "/pt/teste-com-baratinhos.html", 
                 "title": "Teste com baratinhos"
+            }, 
+            {
+                "date": "2013-12-12", 
+                "lang": "pt", 
+                "uri": "/pt/testando-tags.html", 
+                "title": "Testando tags!"
+            }, 
+            {
+                "date": "2013-12-12", 
+                "lang": "pt", 
+                "title": "Testando tags!", 
+                "uri": "/pt/testando-tags.html", 
+                "tags": "test,oi,nois"
+            }, 
+            {
+                "date": "2013-12-12", 
+                "lang": "pt", 
+                "tags": "test,oi,nois", 
+                "uri": "/pt/testando-tags.html", 
+                "title": "Testando tags!"
             }
         ]
     }

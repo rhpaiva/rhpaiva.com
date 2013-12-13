@@ -700,11 +700,41 @@ textarea {
 html[lang='en'] {
   border-top: 5px solid #6284ae;
 }
+html[lang='en'] .post-tag {
+  background: #c7d3e2;
+}
+html[lang='en'] .snippet {
+  background: rgba(98, 132, 174, 0.1);
+}
+html[lang='en'] .snippet code {
+  border: 1px solid #d8e0eb;
+  background: rgba(255, 255, 255, 0.7);
+}
 html[lang='pt'] {
-  border-top: 5px solid #769b7b;
+  border-top: 5px solid #cccd5f;
+}
+html[lang='pt'] .post-tag {
+  background: #f1f2d4;
+}
+html[lang='pt'] .snippet {
+  background: rgba(204, 205, 95, 0.1);
+}
+html[lang='pt'] .snippet code {
+  border: 1px solid #e5e6ad;
+  background: rgba(255, 255, 255, 0.7);
 }
 html[lang='de'] {
-  border-top: 5px solid #c86d6d;
+  border-top: 5px solid #5d8163;
+}
+html[lang='de'] .post-tag {
+  background: #c0d1c2;
+}
+html[lang='de'] .snippet {
+  background: rgba(93, 129, 99, 0.1);
+}
+html[lang='de'] .snippet code {
+  border: 1px solid #cedcd0;
+  background: rgba(255, 255, 255, 0.8);
 }
 body {
   margin: 20px;
@@ -715,16 +745,13 @@ a {
   -ms-transition: color 500ms ease;
   -o-transition: color 500ms ease;
   transition: color 500ms ease;
-  color: #5281cc;
+  color: #3e73c6;
   text-decoration: none;
 }
 a:hover,
-a:hover:visited {
-  color: #24457a;
+a:visited:hover {
+  color: #182f53 !important;
   text-decoration: underline;
-}
-a:visited {
-  color: #917791;
 }
 #me {
   font-weight: 300;
@@ -756,7 +783,7 @@ a:visited {
   text-decoration: none;
 }
 #me a:hover {
-  color: #24457a;
+  color: #182f53;
 }
 .nav-languages,
 .nav-menu {
@@ -772,6 +799,7 @@ a:visited {
 }
 .nav-languages a,
 .nav-menu a {
+  font-weight: 400;
   padding: 8px 10px;
   -webkit-transition: background 500ms ease;
   -moz-transition: background 500ms ease;
@@ -781,7 +809,7 @@ a:visited {
 }
 .nav-languages a:visited,
 .nav-menu a:visited {
-  color: #5281cc;
+  color: #3e73c6;
 }
 .nav-menu li:first-child a {
   padding-left: 0;
@@ -794,39 +822,45 @@ a:visited {
 }
 .nav-languages a:hover,
 .nav-languages a:visited:hover {
-  color: #ffffff;
+  color: #fff !important;
   text-decoration: none;
 }
 .lang-pt:hover {
-  background: #769b7b;
+  background: #cccd5f;
 }
 .lang-en:hover {
   background: #6284ae;
 }
 .lang-de:hover {
-  background: #c86d6d;
+  background: #5d8163;
 }
-#content h1,
-#content h2,
-#content h3 {
+main h1,
+main h2,
+main h3 {
   text-shadow: 1px 1px 0 #ffffff;
   filter: dropshadow(color=#ffffff, offx=1px, offy=1px);
   color: #1a1a1a;
   font-weight: 300;
-  margin-bottom: 10px;
 }
-#content h1 + p,
-#content h2 + p,
-#content h3 + p {
+main h1 + p,
+main h2 + p,
+main h3 + p {
   margin-top: 0;
 }
-#content h2,
-#content h3 {
+main h2,
+main h3 {
   text-transform: uppercase;
+  margin: 40px 0 10px;
 }
-#content a:hover {
+main a {
+  font-weight: 400;
+}
+main a:hover {
   -webkit-border-radius: 1000px;
   border-radius: 1000px;
+}
+main a:visited {
+  color: #624080;
 }
 article header {
   margin-bottom: 30px;
@@ -864,9 +898,19 @@ footer {
 .post-date {
   color: #808080;
   text-transform: uppercase;
+  margin-right: 5px;
 }
 .post-date span {
   color: #000000;
+}
+.post-tag {
+  color: #404040;
+  padding: 1px 5px;
+  margin-left: 4px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-shadow: 1px 1px 0px #ffffff;
+  filter: dropshadow(color=#ffffff, offx=1px, offy=1px);
 }
 .pull-right {
   float: right;
@@ -878,6 +922,18 @@ footer {
   list-style: none;
   list-style-image: none;
 }
+.snippet {
+  display: inline-block;
+  font-size: 13px;
+  padding: 10px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.snippet code {
+  display: inline-block;
+  padding: 20px;
+  color: #333333;
+}
 #share {
   text-align: right;
   margin-top: 30px;
@@ -887,6 +943,9 @@ footer {
   -webkit-border-radius: 4px;
   border-radius: 4px;
   clear: both;
+}
+#share a {
+  margin-right: 10px;
 }
 #disqus {
   -webkit-border-radius: 4px;
@@ -908,19 +967,19 @@ footer {
     width: 1000px;
     margin: 0 auto 20px;
   }
-  .banner {
+  header[role="banner"] {
     font-size: 20px;
   }
-  .banner h1 {
+  header[role="banner"] h1 {
     font-size: 42px;
   }
-  #content h1 {
+  main h1 {
     font-size: 2.6em;
   }
-  #content h2 {
+  main h2 {
     font-size: 2.0em;
   }
-  #content h3 {
+  main h3 {
     font-size: 1.5em;
   }
   .posts-list {
@@ -1003,5 +1062,14 @@ footer {
   h2,
   h3 {
     page-break-after: avoid;
+  }
+  header + hr,
+  .banner,
+  #share,
+  #disqus {
+    display: none;
+  }
+  html {
+    border: none !important;
   }
 }
