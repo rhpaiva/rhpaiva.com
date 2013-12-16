@@ -1,5 +1,8 @@
 {
-    "dateFormat" : "%d.%m.%Y",
+    "locale": "de_DE",
+    "dateFormat_short" : "%d.%m.%Y",
+    "dateFormat_long" : "%d. %B %Y",
+
     "goToContent": "Direkt zum Inhalt",
     "archive"    : "Archiv",
     "whoAmI"     : "Wer bin ich",

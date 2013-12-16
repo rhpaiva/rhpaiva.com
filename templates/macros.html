@@ -1,7 +1,11 @@
 {% macro post_base(post, lang, vars) %}
     <header>
         <h1>{{post.title}}</h1>
-        <small class="post-date">{{lang.postedOn}} <span>{{vars.format_datetime(post.date, lang.dateFormat)}}</span></small> &bull; 
+    {% if post.date %}
+        <small class="post-date">{{lang.postedOn}} 
+            <time datetime="{{post.date}}">{{vars.format_datetime(post.date, lang.dateFormat_long)}}</time>
+        </small> &bull; 
+    {% endif %}
     {% if post.tags %}
         {% for tag in post.tags.split(',') %}
         <small class="post-tag">{{tag}}</small> 
@@ -13,7 +17,7 @@
 {% macro posts_list(posts, lang, vars) %}
     <ul class="posts-list list-nobullets">
     {% for post in posts|reverse %}
-        <li><span>{{vars.format_datetime(post.date, lang.dateFormat)}}</span> <a href="{{post.uri}}">{{post.title}}</a></li>
+        <li><time datetime="{{post.date}}">{{vars.format_datetime(post.date, lang.dateFormat_short)}}</time> <a href="{{post.uri}}">{{post.title}}</a></li>
     {% endfor %}
     </ul>
 {% endmacro %}

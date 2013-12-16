@@ -3,6 +3,7 @@ from flask import render_template
 
 import json
 import os.path
+import locale
 
 app = Flask(__name__)
 
@@ -43,6 +44,12 @@ def render_page(language, page_uri, vars = {}):
         return render_template('404.html'), 404
 
     i18n = read_json('i18n/' + language + '.json')
+
+    # must cast to string otherwise we'll have a
+    # ValueError: too many values to unpack
+    locale_lang = str(i18n['locale']) + '.utf8'
+
+    locale.setlocale(locale.LC_TIME, locale_lang)
 
     vars['language']        = language
     vars['format_datetime'] = format_datetime

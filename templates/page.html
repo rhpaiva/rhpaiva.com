@@ -10,19 +10,18 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{page_title}}</title>
+        <title>{{page_title}} | Rodrigo Paiva</title>
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <meta property="og:url" content="http://www.rhpaiva.com">
         <meta property="og:title" content="{{page_title}}" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="document" />
         <meta property="og:image" content="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650" />
-        <meta property="og:site_name" content="Mozilla Developer Network" />
+        <meta property="og:site_name" content="Rodrigo Paiva" />
         <meta property="og:description" content="{{page_description}}" />
 
         <meta name="description" content="{{page_description}}">
         <meta name="author" content="Rodrigo Paiva <rhpaiva@gmail.com>">
-
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/blog-0.0.1.css">
         <!--<script src="/js/vendor/modernizr-2.6.2.min.js"></script>-->
@@ -36,9 +35,9 @@
         <p class="hidden"><a href="#content">{{ lang.goToContent }}</a></p>
 
         <header role="banner">
-            <h1 id="me"><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50"></h1>
+            <h1 id="me"><a href="/{{ vars.language }}">Rodrigo Paiva <small>(rhpaiva)</small></a><img src="http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=50" width="50" alt="Picture"></h1>
             <nav>
-                <ul class="nav-menu" class="list-inline">
+                <ul class="nav-menu list-inline">
                     <li><a href="/{{ vars.language }}/whoami.html" title="{{ lang.whoAmI }}?">{{ lang.whoAmI }}?</a></li>
                 </ul>
                 <ul class="nav-languages list-inline">
@@ -64,7 +63,7 @@
                 </div>
             </div>
         {% if not disable_comments %}
-            <div id="disqus">
+            <div id="disqus" role="complementary">
                 <div id="disqus_thread"></div>
             </div>
         {% endif %}
@@ -75,12 +74,12 @@
             <ul class="social list-inline">
                 <li><a href="http://www.facebook.com/rhpaiva" title="My profile on Facebook"><span class="icon-facebook-rect"></span> Facebook</a></li>
                 <li><a href="http://www.github.com/rhpaiva" title="My profile on Github"><span class="icon-github-circled"></span> Github</a></li>
-                <li><a href="http://linkedin.com/in/rodrigopaiva1" title="My profile on Linkedin"><span class="icon-linkedin-rect"></span> Linkedin</a></span></li>
+                <li><a href="http://linkedin.com/in/rodrigopaiva1" title="My profile on Linkedin"><span class="icon-linkedin-rect"></span> Linkedin</a></li>
                 <li><a href="http://www.xing.com/profiles/Rodrigo_Paiva2" title="My profile on Xing"><span class="icon-xing"></span> Xing</a></li>
             </ul>
         </footer>
 
-        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>
         var addthis_config = {"data_track_addressbar":true};
 

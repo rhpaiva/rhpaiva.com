@@ -708,33 +708,33 @@ html[lang='en'] .snippet {
 }
 html[lang='en'] .snippet code {
   border: 1px solid #d8e0eb;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
 }
 html[lang='pt'] {
   border-top: 5px solid #cccd5f;
 }
 html[lang='pt'] .post-tag {
-  background: #f1f2d4;
+  background: #e5e6ad;
 }
 html[lang='pt'] .snippet {
   background: rgba(204, 205, 95, 0.1);
 }
 html[lang='pt'] .snippet code {
   border: 1px solid #e5e6ad;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.9);
 }
 html[lang='de'] {
   border-top: 5px solid #5d8163;
 }
 html[lang='de'] .post-tag {
-  background: #c0d1c2;
+  background: #cedcd0;
 }
 html[lang='de'] .snippet {
   background: rgba(93, 129, 99, 0.1);
 }
 html[lang='de'] .snippet code {
   border: 1px solid #cedcd0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
 }
 body {
   margin: 20px;
@@ -752,6 +752,10 @@ a:hover,
 a:visited:hover {
   color: #182f53 !important;
   text-decoration: underline;
+}
+strong,
+b {
+  font-weight: 400;
 }
 #me {
   font-weight: 300;
@@ -834,40 +838,37 @@ a:visited:hover {
 .lang-de:hover {
   background: #5d8163;
 }
-main h1,
-main h2,
-main h3 {
-  text-shadow: 1px 1px 0 #ffffff;
-  filter: dropshadow(color=#ffffff, offx=1px, offy=1px);
-  color: #1a1a1a;
-  font-weight: 300;
-}
-main h1 + p,
-main h2 + p,
-main h3 + p {
-  margin-top: 0;
-}
-main h2,
-main h3 {
-  text-transform: uppercase;
-  margin: 40px 0 10px;
-}
-main a {
-  font-weight: 400;
-}
-main a:hover {
-  -webkit-border-radius: 1000px;
-  border-radius: 1000px;
-}
-main a:visited {
-  color: #624080;
-}
 article header {
   margin-bottom: 30px;
 }
 article header h1 {
   margin: 0;
   padding: 0;
+}
+article h1,
+article h2,
+article h3 {
+  text-shadow: 1px 1px 0 #ffffff;
+  filter: dropshadow(color=#ffffff, offx=1px, offy=1px);
+  color: #1a1a1a;
+  font-weight: 400;
+}
+article h1 + p,
+article h2 + p,
+article h3 + p {
+  margin-top: 0;
+}
+article section h1,
+article h2,
+article h3 {
+  margin: 30px 0 10px;
+}
+article a:hover {
+  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
+}
+article a:visited {
+  color: #624080;
 }
 footer {
   color: #bfbfbf;
@@ -891,7 +892,7 @@ footer {
 .posts-list li {
   margin: 10px 0;
 }
-.posts-list span {
+.posts-list time {
   color: #b3b3b3;
   margin-right: 10px;
 }
@@ -900,11 +901,11 @@ footer {
   text-transform: uppercase;
   margin-right: 5px;
 }
-.post-date span {
+.post-date time {
   color: #000000;
 }
 .post-tag {
-  color: #404040;
+  color: #0d0d0d;
   padding: 1px 5px;
   margin-left: 4px;
   -webkit-border-radius: 2px;
@@ -925,7 +926,7 @@ footer {
 .snippet {
   display: inline-block;
   font-size: 13px;
-  padding: 10px;
+  padding: 5px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
@@ -957,6 +958,16 @@ footer {
 #disqus_thread {
   padding: 20px;
 }
+#longerStory {
+  display: none;
+  visibility: hidden;
+  border-top: 1px solid #ccc;
+  margin-top: 40px;
+}
+#longerStory:target {
+  display: block;
+  visibility: visible;
+}
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -964,7 +975,7 @@ footer {
    ========================================================================== */
 @media only screen and (min-width: 1025px) {
   body {
-    width: 1000px;
+    width: 960px;
     margin: 0 auto 20px;
   }
   header[role="banner"] {
@@ -973,14 +984,19 @@ footer {
   header[role="banner"] h1 {
     font-size: 42px;
   }
-  main h1 {
+  article h1 {
     font-size: 2.6em;
   }
-  main h2 {
+  article h2 {
     font-size: 2.0em;
   }
-  main h3 {
+  article h3 {
     font-size: 1.5em;
+  }
+  article h1,
+  article h2,
+  article h3 {
+    font-weight: 300;
   }
   .posts-list {
     margin: 0;
@@ -1064,7 +1080,7 @@ footer {
     page-break-after: avoid;
   }
   header + hr,
-  .banner,
+  header[role="banner"],
   #share,
   #disqus {
     display: none;

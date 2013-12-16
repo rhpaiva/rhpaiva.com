@@ -1,8 +1,6 @@
-/*! blog - v0.0.1 - 2013-12-13
+/*! blog - v0.0.1 - 2013-12-16
 * Copyright (c) 2013 Rodrigo Paiva; Licensed  */
-'use strict';
-
-
+"use strict";
 // Avoid `console` errors in browsers that lack a console.
 (function() {
     var method;

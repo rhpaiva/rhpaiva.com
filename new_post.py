@@ -53,6 +53,7 @@ def update_index(node):
         with open('posts.json', 'rw+') as json_file:
             index = json.load(json_file)
 
+            # append the new node to the key that corresponds to the language
             index['posts'][node['lang']].append(node)
 
             # set the file pointer to the beginning

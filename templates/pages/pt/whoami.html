@@ -1,7 +1,112 @@
+{% extends "page.html" %}
 {% set page_title = "Quem sou eu?" %}
-
-{% extends 'post.html' %}
+{% set page_description = "Descrição do meu perfil profissional e um pouco de história sobre mim" %}
+{% set disable_comments = True %}
 
 {% block page_content %}
-oi tudo bom
+    <h1>{{page_title}}</h1>
+    <p>Meu nome é Rodrigo <del><small>Henrique</small></del> Paiva, nasci em 
+    Guarulhos, SP e trabalho com desenvolvimento web
+    desde 2003. <strong>Essa é a versão <abbr title="Too Long; Didn't Read">tl;dr</abbr></strong>
+    sobre mim, mas tem <a href="#longerStory">outra mais longa</a> pra quem se interessa por  histórias :)</p>
+
+    <p>Sou auto-didata e comecei a estudar sobre desenvolvimento web em 2001, 
+    e em 2003 comecei a trabalhar na área. Sou desenvolvedor full-stack que sabe 
+    atuar tanto no front quanto no backend de aplicações. Apesar de ter como 
+    especialidade o desenvolvimento backend delas, gosto de aprender sobre os 
+    outros processos que envolvem uma aplicação, indo desde a 
+    concepção até o desenvolvimento e deploy dela.</p>
+
+    <h2>Interesses</h2>
+    <ul>
+        <li><a href="http://pt.wikipedia.org/wiki/Service-oriented_architecture"><abbr title="Service Oriented Architecture" rel="external">SOA</abbr></a></li>
+        <li>Arquitetura Web</li>
+        <li>Práticas Ágeis</li>
+        <!-- i know this is semantically another UL -->
+        <li>Backend: PHP 5.3+, <a href="http://phalconphp.com" rel="external">Phalcon PHP</a>, 
+            Python, <a href="http://flask.pocoo.org/" rel="external">Flask</a>, 
+            <a href="http://www.tornadoweb.org" rel="external">Tornado</a>, NoSQL, 
+            Node.js, Grunt.
+        </li>
+        <li>Frontend e <abbr title="User Experience">UX</abbr>: HTML5 e suas APIs, Javascript, Usabilidade, Acessibilidade, Webstandards,
+            Semântica, Wireframes, Layouts responsivos, Pré-processadores CSS.
+        </li>
+        <li>Linux</li>
+        <li>Idiomas</li>
+        <li>Música e tocar violão</li>
+        <li>Esportes (futebol, natação e corrida)</li>
+    </ul>
+
+    <h2>Contato</h2>
+    <p>Estão todos ali no rodapé. E tem também o email <strong>rhpaiva at gmail.com</strong> e o
+        <a href="http://twitter.com/paivarh" rel="external">@paivarh</a> (que raramente uso).</p>
+
+    <section id="longerStory">
+        <h1>A história mais longa</h1>
+        <p>Em 2001, quando tinha 16 anos, fiquei curioso pra saber como as páginas de internet 
+        eram construídas e comecei a me informar sobre o assunto. Depois de descobrir que
+        precisaria aprender HTML pra fazer sites, lembrei que tinha uma apostila de 
+        HTML de um curso de informática que tinha feito aos 14 anos, então comecei a estudá-la.
+        Essa apostila era pequena mas foi o suficiente pra que eu conseguisse fazer
+        meus primeiros experimentos.</p>
+
+        <h2>E veio o IRC</h2>
+        <p>Foi através dessa curiosidade que comecei a acessar o 
+        <abbr title="Internet Relay Chat"><strong>IRC</strong></abbr> pra tirar dúvidas no canal 
+        #webmasters (e depois até virando <abbr title="Operador">OP</abbr> do #webfree) 
+        da falecida <strong>Brasnet</strong>. A princípio entrava apenas pra tirar dúvidas e não
+        interagia muito, mas conforme meu conhecimento foi aumentando, comecei também 
+        a ajudar os usuários dos canais. Por causa disso, conheci caras que iniciaram
+        comigo e hoje são ótimos profissionais, como o Bruno (Porkaria), Matheus Tardivo (Cevada),
+        Fabio Espindula (Ermac), Gustavo Gawryszewski (gopher), Thiago Campos (_Redneck_), Marcus Fernandez (skatista), Jefferson Amorin (Jeh), Cauan Cabral, 
+        entre outros que resolveram sair dessa área doida que é a TI :D.<br>
+        E uma menção honrosa pro meu amigo e mentor <a href="http://mois.com.br/" rel="external">Rafael Meusburger</a>, o qual não conheci no IRC mas está entre os grande profissionais que
+        conheço :)</p>
+
+        <h2>Como fazer coisas dinâmicas?</h2>
+        <p>Nesse mesmo ano de 2001, após uma <em>"bem-sucedida"</em> criação de meu primeiro
+        site (no HPG), onde fiz o <em>"logo"</em> no WordArt do MS Word e usei vários scripts 
+        exóticos em JS, percebi que o HTML já não era suficiente pra mim, então
+        descobri que poderia usar programação no lado servidor pra realizar includes.
+        Aquilo foi fantástico! Foi aí que comecei a estudar mais sobre fazer coisas 
+        no servidor e descobri o <strong><abbr title="Active Server Pages">ASP</abbr></strong>. Comprei meu primeiro livro de
+        programação (A Bíblia do ASP com 1000 e não sei quantas páginas) e comecei 
+        a estudá-lo. Passava dia e noite lendo aquele livro e, quanto mais aprendia, 
+        mais queria aprender. Programar e ver as coisas acontecendo 
+        através de códigos era fascinante! :D</p>
+
+        <h2>A labuta</h2>
+        <p>Em 2002, consegui um estágio na Ford pra trabalhar como assistente administrativo,
+        o qual foi meu único emprego fora da área de TI. Por conta disso, tinha que
+        trabalhar de dia e concluir o ensino médio à noite. Nesse ano acabei deixando
+        de lado meus estudos sobre TI.</p>
+
+        <p>Em 2003, consegui um estágio como desenvolvedor web em uma pequena empresa de eletrônica onde dei continuidade no desenvolvimento do ERP interno que fora feito
+        em ASP com MySQL. A partir daí não parei mais de trabalhar com TI e desde 
+        2004 trabalho com <strong>PHP</strong>.</p>
+
+        <p>Já passei por empresa pequena, média e grande. Já desenvolvi intranets
+        pro Ministério da Saúde e entidades do governo Japonês, sites de ecommerce e
+        institutionais, linguagem de marcação com parser pra templates de 
+        gerenciador de portais temáticos, sistema de atendimento helpdesk pra
+        plataforma de hospedagem, ERP para lojas e suas filiais, e por aí vai...</p>
+
+        <p>Trabalho desde 2007 com <strong>webstandards</strong> e <strong>semântica</strong> e tenho sido evangelista dessas práticas em todos lugares e projetos que trabalhei desde então.</p>
+
+        <h2>Curiosidade por aprender</h2>
+        <p>Também me interesso por <strong>front-end (UX)</strong> e suas tecnologias relacionadas, como <strong>usabilidade</strong>, <strong>acessibilidade</strong>,
+        <strong>wireframes</strong> (uso o Balsamiq), <strong>SEO</strong> e 
+        <strong>layouts responsivos</strong>.</p>
+
+        Virei fã de <strong>pré-processadores CSS</strong> (uso LESS), <strong>Sublime Text</strong>, <strong>Emmet</strong> e <strong>Grunt</strong> mas ainda prefiro escrever Javascript
+        na mão (ou com JQuery), e ainda não me convenci que Coffeescript é útil.
+
+        <p>Ainda acho que não sei <strong>Python</strong>, mas estou estudando pra isso :). Também
+        estudo <strong>Node.js</strong> e coisas que o cercam. Acho muito foda o quanto o ecossistema de
+        Javascript evoluiu desde que comecei a aprender a linguagem.</p>
+
+        <h2>E somente TI?</h2>
+        <p>Não... também me interesso por aprender idiomas, outras culturas, 
+        tocar violão, futebol, natação e correr (tento ao menos 15km por semana).</p>
+    </section>
 {% endblock %}

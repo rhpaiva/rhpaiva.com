@@ -1,5 +1,7 @@
 {
-    "dateFormat" : "%m/%d/%Y",
+    "locale": "pt_BR",
+    "dateFormat_short" : "%d/%m/%Y",
+    "dateFormat_long" : "%d de %B de %Y",
     "goToContent": "Ir para o conteúdo",
     "archive"    : "Arquivo",
     "whoAmI"     : "Quem sou eu",
