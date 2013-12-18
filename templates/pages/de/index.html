@@ -4,5 +4,9 @@
 {% set disable_comments = True %}
 
 {% block page_content %}
+{% if vars.posts|length > 0 %}
     {{ macros.posts_list(vars.posts, lang, vars) }}
+{% else %}
+    <h1>Keinen Post bisher!</h1>
+{% endif %}
 {% endblock %}
