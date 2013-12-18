@@ -185,6 +185,53 @@ article {
             color: @link-color-visited;
         }
     }
+
+    abbr {
+        position: relative;
+
+        &:after,
+        &:before {
+            position: absolute;
+            font-size: 13px;
+            visibility: hidden;
+            #Fx > .transition(all, 250ms);
+            z-index: 15;
+        }
+
+        // the tooltip
+        &:after {
+            color: #fff;
+            font-weight: 400;
+            top: -20px;
+            content: attr(title);
+            left: -50%;
+            white-space: nowrap;
+            padding: 5px;
+            #Border > .rounded;
+        }
+
+        // the arrow
+        &:before {
+            content: '';
+            border: 7px solid transparent;
+            top: 7px;
+        }
+
+        &:focus:after,
+        &:hover:after {
+            background: fade(#000, 75%);
+            visibility: visible;
+            top: -31px;
+            #Shadow > .box-bottom;
+        }
+
+        &:focus:before,
+        &:hover:before {
+            border-top-color: fade(#000, 75%);
+            visibility: visible;
+            top: -3px;
+        }
+    }
 }
 
 footer {
@@ -289,13 +336,39 @@ footer {
 
 
 #longerStory {
-    display: none;
+    position: absolute;
     visibility: hidden;
+    top: 0; 
+    left: -300px;
     border-top: 1px solid #ccc;
-    margin-top: 40px;
+    opacity: 0;
+    #Fx > .transition(all, 1s);
 
     &:target {
-        display: block;
+        left: 0;
+        position: relative;
         visibility: visible;
+        opacity: 1;
     }
+}
+
+.page-404 {
+    font-size: 50px;
+    text-align: center;
+
+    + p {
+        text-align: center;
+
+        & img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid transparent;
+        #Border > .rounded(1000px);
+        #Shadow > .custom(0 0 0 10px fade(#000, 10%));
+    }
+    }
+}
+
+.circle {
+    #Border > .rounded(50%);
 }

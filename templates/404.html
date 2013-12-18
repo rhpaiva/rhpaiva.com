@@ -1,10 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>File not found - 404</title>
-</head>
-<body>
-	<h1>The file you requested was not found</h1>
-</body>
-</html>
+{% extends "page.html" %}
+{% set page_title = "404 - " + lang.page404_title %}
+{% set page_description = lang.page404_description %}
+{% set disable_comments = True %}
+
+{% block page_content %}
+    <h1 class="page-404">{{page_title}}</h1>
+    <p><img src="/img/homer404.jpg" alt="{{page_description}}" class="circle"></p>
+{% endblock %}

@@ -8,5 +8,8 @@
     "whoAmI"     : "Wer bin ich",
     "listOfPosts": "Liste von Posten",
     "postedOn"   : "Gepostet am",
-    "comments"   : "Kommentar(e)"
+    "comments"   : "Kommentar(e)",
+
+    "page404_title": "Seite nicht gefunden",
+    "page404_description": "Homer ist verzweifelt, weil diese Seite nicht existiert"
 }

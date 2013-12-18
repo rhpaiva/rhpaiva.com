@@ -16,22 +16,19 @@ def create(config):
     new_post_template = \
 """{%% extends "%(template)s.html" %%}
 {%% set page_title = "%(title)s" %%}
-{%% set page_description = "" %%}
+{%% set page_description = "%(title)s" %%}
 {%% set post_tags = "%(tags)s" %%}
 {%% set post_date = "%(date)s" %%}
 {%% set disable_comments = False %%}
 
 {%% block page_content %%}
     {{ macros.post_base({'title': page_title, 'date': post_date, 'tags': post_tags}, lang, vars) }}
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Eum, quos, dolores, pariatur sint impedit atque repellat odit ad minima 
-    dolorem quia ipsa porro consequatur qui expedita. Qui, repellat alias non 
-    iste minima hic laboriosam minus recusandae quos exercitationem sapiente 
-    et optio dignissimos vitae consequatur esse porro consectetur sit eveniet 
-    mollitia voluptate delectus odio tempore eaque aspernatur adipisci 
-    quisquam suscipit rerum quasi possimus aperiam iusto ipsum reiciendis 
-    architecto sunt fugit iure maiores expedita voluptates ullam pariatur vel 
-    deserunt vero dolor omnis molestias?</p>
+    <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. 
+    Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. 
+    Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é 
+    amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti 
+    palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia 
+    ce receita de bolis, mais bolis eu num gostis.</p>
 {%% endblock %%}""" % vars
 
     file_name = config.lang + '/' + create_slug(config.title) + '.html'

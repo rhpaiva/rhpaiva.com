@@ -8,5 +8,8 @@
     "whoAmI"     : "Who am I",
     "listOfPosts": "List of posts",
     "postedOn"   : "Posted on",
-    "comments"   : "Comment(s)"
+    "comments"   : "Comment(s)",
+
+    "page404_title": "Page Not Found",
+    "page404_description": "Homer is desperate because you tried to access a page that doesn't exist"
 }

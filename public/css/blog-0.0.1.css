@@ -870,6 +870,52 @@ article a:hover {
 article a:visited {
   color: #624080;
 }
+article abbr {
+  position: relative;
+}
+article abbr:after,
+article abbr:before {
+  position: absolute;
+  font-size: 13px;
+  visibility: hidden;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  transition: all 250ms ease;
+  z-index: 15;
+}
+article abbr:after {
+  color: #fff;
+  font-weight: 400;
+  top: -20px;
+  content: attr(title);
+  left: -50%;
+  white-space: nowrap;
+  padding: 5px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+article abbr:before {
+  content: '';
+  border: 7px solid transparent;
+  top: 7px;
+}
+article abbr:focus:after,
+article abbr:hover:after {
+  background: rgba(0, 0, 0, 0.75);
+  visibility: visible;
+  top: -31px;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(100, 100, 100, 0.5);
+  -moz-box-shadow: 0 3px 3px 0 rgba(100, 100, 100, 0.5);
+  box-shadow: 0 3px 3px 0 rgba(100, 100, 100, 0.5);
+}
+article abbr:focus:before,
+article abbr:hover:before {
+  border-top-color: rgba(0, 0, 0, 0.75);
+  visibility: visible;
+  top: -3px;
+}
 footer {
   color: #bfbfbf;
 }
@@ -959,14 +1005,44 @@ footer {
   padding: 20px;
 }
 #longerStory {
-  display: none;
+  position: absolute;
   visibility: hidden;
+  top: 0;
+  left: -300px;
   border-top: 1px solid #ccc;
-  margin-top: 40px;
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 #longerStory:target {
-  display: block;
+  left: 0;
+  position: relative;
   visibility: visible;
+  opacity: 1;
+}
+.page-404 {
+  font-size: 50px;
+  text-align: center;
+}
+.page-404 + p {
+  text-align: center;
+}
+.page-404 + p img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
+  -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.circle {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.

@@ -1,108 +1,10 @@
 {
     "posts": {
         "de": [
-            {
-                "date": "2013-12-11", 
-                "lang": "de", 
-                "uri": "/de/mein-erste-post.html", 
-                "title": "Mein erste Post!"
-            }, 
-            {
-                "date": "2013-12-11", 
-                "lang": "de", 
-                "uri": "/de/mein-zweite-post.html", 
-                "title": "Mein zweite Post!"
-            }, 
-            {
-                "date": "2013-12-11", 
-                "lang": "de", 
-                "uri": "/de/mein-drite-post.html", 
-                "title": "Mein drite Post!"
-            }
         ], 
         "en": [
-            {
-                "date": "2013-12-09", 
-                "lang": "en", 
-                "uri": "/en/another-one-bites-the-dusta2.html", 
-                "title": "another one bites the dusta!2"
-            }, 
-            {
-                "date": "2013-12-09", 
-                "lang": "en", 
-                "uri": "/en/another-one-bites-the-dusta3.html", 
-                "title": "another one bites the dusta!3"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/fear-of-the-dark.html", 
-                "title": "Fear of the dark }:D"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/aces-high.html", 
-                "title": "aces high"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/killer-queen.html", 
-                "title": "killer queen"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/bohemian-rapsody.html", 
-                "title": "bohemian rapsody!"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/bohemian-rapsody.html", 
-                "title": "bohemian rapsody!"
-            }, 
-            {
-                "date": "2013-12-10", 
-                "lang": "en", 
-                "uri": "/en/bohemian-rapsody.html", 
-                "title": "bohemian rapsody!"
-            }
         ], 
         "pt": [
-            {
-                "date": "2013-12-11", 
-                "lang": "pt", 
-                "uri": "/pt/teste-com-baratinhos.html", 
-                "title": "Teste com baratinhos"
-            }, 
-            {
-                "date": "2013-12-11", 
-                "lang": "pt", 
-                "uri": "/pt/teste-com-baratinhos.html", 
-                "title": "Teste com baratinhos"
-            }, 
-            {
-                "date": "2013-12-12", 
-                "lang": "pt", 
-                "uri": "/pt/testando-tags.html", 
-                "title": "Testando tags!"
-            }, 
-            {
-                "date": "2013-12-12", 
-                "lang": "pt", 
-                "title": "Testando tags!", 
-                "uri": "/pt/testando-tags.html", 
-                "tags": "test,oi,nois"
-            }, 
-            {
-                "date": "2013-12-12", 
-                "lang": "pt", 
-                "tags": "test,oi,nois", 
-                "uri": "/pt/testando-tags.html", 
-                "title": "Testando tags!"
-            }
         ]
     }
 }
