@@ -1,0 +1,9 @@
+{% extends "page.html" %}
+{% set page_title = "404 - Page Not Found" %}
+{% set page_description = page_title %}
+{% set disable_comments = True %}
+
+{% block page_content %}
+    <h1 class="page-404">{{page_title}}</h1>
+    <p><img src="/img/homer404.jpg" alt="{{page_description}}" class="circle"></p>
+{% endblock %}

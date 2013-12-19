@@ -838,6 +838,9 @@ b {
 .lang-de:hover {
   background: #5d8163;
 }
+article {
+  text-align: justify;
+}
 article header {
   margin-bottom: 30px;
 }

@@ -3,6 +3,8 @@
 {% extends "page.html" %}
 {% set disable_comments = True %}
 
+{% block page_title %}{{page_title}}{% endblock %}
+
 {% block page_content %}
 {% if vars.posts|length > 0 %}
     {{ macros.posts_list(vars.posts, lang, vars) }}

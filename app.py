@@ -16,7 +16,7 @@ def route_home(language = 'en'):
     is_valid_language = language in supported_languages
 
     if not is_valid_language:
-        return render_template('404.html'), 404
+        return render_page('en', '404', code = 404)
 
     index = read_json('posts.json')['posts'][language]
     vars  = {'posts': index, 'format_datetime': format_datetime}
@@ -29,21 +29,21 @@ def route_home(language = 'en'):
 def route_page(language, page_uri):
     return render_page(language, page_uri)
 
-def render_page(language, page_uri, vars = {}):
+def render_page(language, page_uri, vars = {}, code = 200):
     import re as regexp
 
     is_valid_name     = regexp.search('^[0-9\-\_a-z]+$', page_uri)
     is_valid_language = language in supported_languages
     path              = page_file % {'lang': language, 'page': page_uri}
-    code              = 200
 
     if (
         not is_valid_name or
         not is_valid_language or
         not file_exists('templates/' + path)
     ):
-        path = '404.html'
-        code = 404
+        path     = '404.html'
+        code     = 404
+        language = 'en'
 
     i18n = read_json('i18n/' + language + '.json')
 
@@ -93,10 +93,10 @@ def file_exists(path):
 
 @app.errorhandler(404)
 def error_not_found(error):
-    return render_page('404.html'), 404
+    return render_page('en', '404', 404)
 
 if __name__ == '__main__':
     # register the filter
     app.jinja_env.filters['format_datetime'] = format_datetime
-    app.run(debug = True, host='0.0.0.0')
-    #app.run()
+    #app.run(debug = True, host='0.0.0.0')
+    app.run()
