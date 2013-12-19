@@ -42,3 +42,4 @@ venv
 *.sublime-workspace
 
 node_modules
+rsync.sh
