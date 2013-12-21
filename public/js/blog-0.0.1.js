@@ -1,4 +1,4 @@
-/*! blog - v0.0.1 - 2013-12-18
+/*! blog - v0.0.1 - 2013-12-21
 * Copyright (c) 2013 Rodrigo Paiva; Licensed  */
 "use strict";
 // Avoid `console` errors in browsers that lack a console.

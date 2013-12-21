@@ -71,14 +71,23 @@ strong, b {
     font-weight: 400;
 }
 
+abbr[title] {
+    border-bottom: 1px dashed;
+}
+
 #me {
     font-weight: 300;
     text-align: center;
     #Shadow > .text(@text-color-shadow, 1px, 1px, 0);
 
-    img {
+    .picture {
+        background: transparent url(http://www.gravatar.com/avatar/196ca5d41814edad665c2ab14a8f5650?s=51) -1px -1px no-repeat;
         border: 1px solid transparent;
         margin-left: 20px;
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
         #Border > .rounded(1000px);
         #Shadow > .custom(0 0 0 2px fade(#000, 20%));
         #Fx > .transition;
@@ -180,6 +189,8 @@ article {
     }
 
     a {
+        font-weight: 400;
+
         &:hover {
             #Border > .rounded(1000px);
         }

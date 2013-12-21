@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, url_for
 
 import json
 import os.path
@@ -55,7 +54,12 @@ def render_page(language, page_uri, vars = {}, code = 200):
 
     vars['language']        = language
     vars['format_datetime'] = format_datetime
-    vars['uri']             = language + '/' + page_uri
+    #vars['uri']             = language + '/' + page_uri
+
+    if page_uri == 'index':
+        vars['uri'] = url_for('route_home', language = language)
+    else:
+        vars['uri'] = url_for('route_page', language = language, page_uri = page_uri)
 
     return render_template(path, lang = i18n, vars = vars), code
 
