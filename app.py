@@ -67,7 +67,13 @@ def create_slug(string):
     import unicodedata
 
     # TODO: those replaces should be arrays of characters, huh?
-    string = string.replace('?', '').replace('!', '').replace(' ', '-').lower()
+    string = (string
+                .replace('?', '')
+                .replace('!', '')
+                .replace(' ', '-')
+                .replace(',', '')
+                .lower())
+
     string = unicode(string, 'utf-8')
 
     return ''.join(c for c in unicodedata.normalize('NFD', string)

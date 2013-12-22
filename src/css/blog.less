@@ -245,6 +245,14 @@ article {
             top: -3px;
         }
     }
+
+    code {
+        background: lighten(@text-color-light, 15%);
+        font-family: 'courier new', monospace, serif;
+        padding: 1px 3px;
+        margin: auto 5px;
+        #Border > .rounded(2px);
+    }
 }
 
 footer {
@@ -314,11 +322,12 @@ footer {
     font-size: 13px;
     padding: 5px;
     #Border > .rounded;
+    margin: 0 auto;
 
     code {
         display: inline-block;
-        padding: 20px;
-        color: lighten(@text-color, 20%);
+        padding: 10px;
+        margin: 0;
     }
 }
 

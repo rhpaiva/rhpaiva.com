@@ -1,0 +1,244 @@
+{% extends "page.html" %}
+{% set page_title = "Running Flask with Nginx, Virtualenv and uWSGI" %}
+{% set page_description = "Learn how to install and configure a basic app 
+running Flask with Nginx, Virtualenv and uWSGI" %}
+{% set post_tags = "flask,python,uwsgi,nginx" %}
+{% set post_date = "2013-12-21" %}
+{% set disable_comments = False %}
+
+{% block page_content %}
+    {{ macros.post_base({'title': page_title, 'date': post_date, 'tags': post_tags}, lang, vars) }}
+
+    <p>After choosing Python with Flask to create this blog, I had a tough time
+    to run the app on Nginx using Virtualenv and uWSGI.</p>
+    <p>As I'm a newcomer to the Python world, certain things didn't work out as 
+    expected when using some blog posts as 
+    <a href="#post-references" title="The references used for this post">references</a> 
+    to install and configure everything. That's why I'm sharing the solution 
+    that worked for me. That's basically a compilation from my references and 
+    some tweaks that I made myself. This installation is based on <strong>Ubuntu 13.04+</strong>.</p>
+
+    <p>Let me know if my steps worked for you too or if I made a mistake :)</p>
+
+    <section>
+        <h2>Installing and configuring Virtualenv</h2>
+
+        <p>As you probably know (if you don't know yet, now you know), 
+        running Python applications with Virtualenv
+        is a recommended good practice, because this way you can isolate different
+        versions of Python in virtual environments and avoid messing up 
+        with your system.</p>
+        <p>First, install Virtualenv via <code>apt</code>:
+        {{ macros.snippet('sudo aptitude install python-virtualenv' , 'bash')}}
+        </p>
+
+        <p>Go to your project's folder and initiate a virtual environment in it:
+{{ macros.snippet(
+'# you can replace "venv" for any name you prefer
+virtualenv venv'
+, 'bash')}}
+        </p>
+
+        <p>Activate your virtual environment and install Flask with pip:
+{{ macros.snippet(
+'source venv/bin/activate
+
+# notice that a "(venv)" will be attached to your bash
+(venv)user@host:~/project-folder$ 
+
+# install Flask using pip
+pip install Flask
+'
+, 'bash')}}
+        </p>
+    </section>
+
+    <section>
+        <h2>Installing and configuring the uWSGI server</h2>
+
+        <p>Install the server and its dependencies:
+{{ macros.snippet(
+"sudo aptitude install uwsgi uwsgi-plugin-python"
+, 'bash')}}
+        </p>
+
+        <p>Create the log folder (change the owners to your user):
+{{ macros.snippet(
+"sudo mkdir -p /var/log/uwsgi
+sudo chown -R your_user:your_user /var/log/uwsgi"
+, 'bash')}}
+        </p>
+
+        <p>Create the file <code>/etc/uwsgi/apps-available/YOUR_APP.ini</code> 
+        with the settings:
+{{ macros.snippet(
+"[uwsgi]
+#application's base folder
+base = /home/path/to/your/app
+chdir = %(base)
+
+# python module to import (the name of your Flask app file)
+# app.py here
+app = app
+module = %(app)
+
+# change this if you created a virtual environment with another name
+home = %(base)/venv
+pythonpath = %(base)
+
+# socket address
+socket = 127.0.0.1:4242
+
+# the variable that holds a flask application inside the imported module
+# app = Flask(__name__)
+callable = app
+
+#location of log files
+logto = /var/log/uwsgi/%n.log
+
+# tells the server to reload the application everytime it changes
+# don't leave this setting in a production server!
+py-autoreload = 1
+"
+, 'bash')}}
+        </p>
+
+        <p>Create a symbolic link to the previous file to enable it and restart 
+        uwsgi:
+{{ macros.snippet(
+"sudo ln -s /etc/uwsgi/apps-available/YOUR_APP.ini /etc/uwsgi/apps-enabled/YOUR_APP.ini
+sudo service uwsgi restart"
+, 'bash')}}
+        </p>
+    </section>
+
+    <section>
+        <h2>Installing and configuring Nginx</h2>
+
+        <p>I recommend that you install either the stable version <code>1.4.4</code> or the 
+        mainline version <code>1.5.7+</code> due to the "request line parsing" vulnerabilty 
+        that affects other versions of Nginx. The one I used for this article is 
+        the <code>1.4.4</code>.</p>
+
+        <p>The default version from <code>apt</code> is too old, so let's get it from a ppa 
+        repository and install the proper version of Nginx:
+{{ macros.snippet(
+"# add the ppa repository
+sudo add-apt-repository ppa:nginx/stable
+
+# if the command above doesn't work, try this first:
+sudo aptitude install software-properties-common
+
+# after adding the ppa, update the list of packages
+sudo aptitude update && sudo aptitude upgrade
+
+# install nginx
+sudo aptitude install nginx
+
+# start the nginx service
+sudo /etc/init.d/nginx start"
+, 'bash')}}
+        </p>
+
+        <p>Create the file <code>/etc/nginx/sites-available/YOUR_APP</code> and 
+        insert this basic config:
+{{ macros.snippet(
+"server {
+    # assuming that you don't have any other server
+    # like Apache running on port 80
+    listen      80;
+    server_name localhost;
+    charset     utf-8;
+
+    # hides the server information
+    server_tokens off;
+
+    # change it according to your needs
+    set $path '/home/path/to/your/app';
+    root $path;
+
+    location / {
+        try_files $uri @YOUR_APP;
+    }
+
+    # static files - change it to your needs
+    location ~* /(img|css|js|font)/(.+) {
+        alias $path/public/$1/$2;
+    }
+
+    location @YOUR_APP {
+        uwsgi_pass 127.0.0.1:4242;
+        include uwsgi_params;
+    }
+}"
+, 'bash')}}
+
+        </p>
+
+        <p>Make the new configuration available by creating a symbolic link to it
+        and disabling the default one:
+{{ macros.snippet(
+'
+# symlink to the new config
+sudo ln -s /etc/nginx/sites-available/YOUR_APP /etc/nginx/sites-enabled/YOUR_APP
+
+# disable the default one
+# I prefer renaming the original file for later reference. 
+# Delete it if you want.
+sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.disabled
+
+# restart Nginx
+sudo /etc/init.d/nginx restart'
+, 'bash')}}</p>
+    </section>
+
+    <section>
+        <h2>Running the first Flask application</h2>
+
+        <p>Create the file <code>app.py</code> in your application's folder.
+{{ macros.snippet(
+"from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return '<h1>Hello World</h1>!'
+
+if __name__ == '__main__':
+    app.run()
+"
+, 'python')}}
+    </p>
+
+    <p>Unless you change the port on <code>app.run(port=XXXX)</code>,
+    the default one used by Flask server is 5000. So just hit the URL
+    http://localhost:5000 and you should see the output.</p>
+    </section>
+
+    <section>
+        <h2>Problems?</h2>
+
+        <ul>
+            <li>I had some problems with file permissions in my application folder, so
+            <strong>make sure that Nginx can reach and read yours</strong>.</li>
+            <li>If you're testing on a remote server, don't forget to add the port
+            you're using to the firewall rules.</li>
+            <li>Run <code>tail -f</code> on both uWSGI (<code>/var/log/uwsgi/app/YOUR_APP.log</code>) and Nginx (<code>/var/log/nginx/error.log</code>) log files. They
+            can reveal a lot.</li>
+        </ul>
+    </section>
+
+    <section id="post-references">
+        <h2>References</h2>
+
+        <ul>
+            <li>More info on securing Nginx: 
+            <a href="http://www.levigross.com/post/4488812448/10-tips-for-securing-nginx" title="Tips for securing Nginx">http://www.levigross.com/post/4488812448/10-tips-for-securing-nginx</a></li>
+            <li><a href="http://stackoverflow.com/questions/16344756/auto-reloading-python-flask-app-upon-code-changes" title="Auto reloading Python app upon changes">Auto reloading a Python app upon code changes</a></li>
+            <li><a href="http://flask.pocoo.org/docs/installation/" title="Flask installation manual">Flask installation manual</a></li>
+            <li>More on Flask installation: <a href="http://vladikk.com/2013/09/12/serving-flask-with-nginx-on-ubuntu/">http://vladikk.com/2013/09/12/serving-flask-with-nginx-on-ubuntu/</a></li>
+            <li>More on Flask installation (2): <a href="https://gist.github.com/mplewis/6076082">https://gist.github.com/mplewis/6076082</a></li>
+            <li>More on Flask installation (3): <a href="http://www.markjberger.com/flask-with-virtualenv-uwsgi-nginx/">http://www.markjberger.com/flask-with-virtualenv-uwsgi-nginx/</a></li>
+        </ul>
+    </section>
+{% endblock %}
